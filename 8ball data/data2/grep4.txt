@@ -1,0 +1,40 @@
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:111:.method private static shouldCleanUp(Landroid/content/SharedPreferences;)Z
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:121:    invoke-interface {p0, v0, v1, v2}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:194:    invoke-virtual {p1, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:199:    invoke-static {p1}, Landroidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask;->shouldCleanUp(Landroid/content/SharedPreferences;)Z
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:350:    invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:357:    invoke-interface {p1, v1, v3, v4}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+smali/androidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask.smali:360:    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+smali/androidx/core/app/AppLaunchChecker.smali:32:    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+smali/androidx/core/app/AppLaunchChecker.smali:39:    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+smali/androidx/core/app/AppLaunchChecker.smali:54:    invoke-virtual {p0, v0, v1}, Landroid/app/Activity;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+smali/androidx/core/app/AppLaunchChecker.smali:61:    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+smali/androidx/core/app/AppLaunchChecker.smali:113:    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+smali/androidx/core/app/AppLaunchChecker.smali:119:    invoke-interface {p0, v2, v0}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+smali/androidx/core/app/AppLaunchChecker.smali:123:    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat$Helper.smali:1:.class Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat$Helper.smali:3:.source "SharedPreferencesCompat.java"
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat$Helper.smali:8:    value = Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat$Helper.smali:29:.method public apply(Landroid/content/SharedPreferences$Editor;)V
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat$Helper.smali:34:    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat$Helper.smali:42:    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->commit()Z
+smali/androidx/core/content/SharedPreferencesCompat.smali:1:.class public final Landroidx/core/content/SharedPreferencesCompat;
+smali/androidx/core/content/SharedPreferencesCompat.smali:3:.source "SharedPreferencesCompat.java"
+smali/androidx/core/content/SharedPreferencesCompat.smali:9:        Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:1:.class public final Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:3:.source "SharedPreferencesCompat.java"
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:8:    value = Landroidx/core/content/SharedPreferencesCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:18:        Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:27:.field private static sInstance:Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:31:.field private final mHelper:Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:42:    new-instance v0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:44:    invoke-direct {v0}, Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;-><init>()V
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:46:    iput-object v0, p0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;->mHelper:Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:51:.method public static getInstance()Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:57:    sget-object v0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;->sInstance:Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:62:    new-instance v0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:64:    invoke-direct {v0}, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;-><init>()V
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:66:    sput-object v0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;->sInstance:Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:70:    sget-object v0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;->sInstance:Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:77:.method public apply(Landroid/content/SharedPreferences$Editor;)V
+smali/androidx/core/content/SharedPreferencesCompat$EditorCompat.smali:83:    iget-object v0, p0, Landroidx/core/content/SharedPreferencesCompat$EditorCompat;->mHelper:Landroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
