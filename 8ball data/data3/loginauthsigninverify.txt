@@ -1,0 +1,9 @@
+find smali -name "*.smali" -exec grep -l -i "login\|auth\|signin\|verify" {} \; 2>/dev/null | head -20
+smali/android/support/v4/media/MediaMetadataCompat.smali                                smali/android/support/v4/media/session/MediaSessionCompat$MediaSessionImplBase.smali    smali/android/support/v4/media/session/PlaybackStateCompat.smali
+smali/androidx/appcompat/R$attr.smali                                                   smali/androidx/appcompat/R$styleable.smali                                              smali/androidx/appcompat/app/AlertController$AlertParams$3.smali
+smali/androidx/appcompat/app/AlertController$AlertParams$4.smali                        smali/androidx/appcompat/app/AlertController$ButtonHandler.smali                        smali/androidx/appcompat/app/AlertController$AlertParams.smali
+smali/androidx/appcompat/app/AlertController.smali                                      smali/androidx/appcompat/app/AlertDialog$Builder.smali                                  smali/androidx/appcompat/app/AlertDialog.smali
+smali/androidx/appcompat/app/AppCompatDialog.smali                                      smali/androidx/appcompat/app/AppCompatViewInflater.smali                                smali/androidx/appcompat/view/menu/MenuDialogHelper.smali
+smali/androidx/appcompat/widget/ActionBarContainer.smali                                smali/androidx/appcompat/widget/AppCompatSpinner$DialogPopup.smali                      smali/androidx/appcompat/widget/SwitchCompat.smali
+smali/androidx/appcompat/widget/SearchView.smali                                        smali/androidx/appcompat/widget/SuggestionsAdapter.smali
+.../aruangkerja/8ball $                                                                 
