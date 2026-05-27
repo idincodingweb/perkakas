@@ -1,0 +1,19 @@
+grep -rn "EightBallPoolActivity" smali*/ 2>/dev/null | head -20 smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:1:.class Lcom/miniclip/eightballpool/EightBallPoolActivity$1;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:3:.source "EightBallPoolActivity.java"                                                                  smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:11:    value = Lcom/miniclip/eightballpool/EightBallPoolActivity;->initAnrWatchDog(IZZ)V                smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:36:    iput-boolean p1, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity$1;->val$crash:Z
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:38:    iput-boolean p2, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity$1;->val$report:Z
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:51:    iget-boolean v0, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity$1;->val$crash:Z
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$1.smali:56:    iget-boolean v0, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity$1;->val$report:Z
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:1:.class Lcom/miniclip/eightballpool/EightBallPoolActivity$2;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:3:.source "EightBallPoolActivity.java"
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:8:    value = Lcom/miniclip/eightballpool/EightBallPoolActivity;->onCreate(Landroid/os/Bundle;)V
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:18:.field final synthetic this$0:Lcom/miniclip/eightballpool/EightBallPoolActivity;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:22:.method constructor <init>(Lcom/miniclip/eightballpool/EightBallPoolActivity;Landroid/content/Context;)V
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:26:    iput-object p1, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity$2;->this$0:Lcom/miniclip/eightballpool/EightBallPoolActivity;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity$2.smali:43:    invoke-virtual {p0, p1, p1, v0, v0}, Lcom/miniclip/eightballpool/EightBallPoolActivity$2;->invalidate(IIII)V
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali:1:.class public Lcom/miniclip/eightballpool/EightBallPoolActivity;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali:3:.source "EightBallPoolActivity.java"
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali:34:    iput-object v0, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity;->TAG:Ljava/lang/String;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali:39:    iput-object v0, p0, Lcom/miniclip/eightballpool/EightBallPoolActivity;->eventsReceiver:Lcom/miniclip/events/EventsReceiver;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali:48:    sget-object v0, Lcom/miniclip/eightballpool/EightBallPoolActivity;->_launchIntent:Landroid/content/Intent;
+smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali:58:    sput-object v0, Lcom/miniclip/eightballpool/EightBallPoolActivity;->_launchIntent:Landroid/content/Intent;
+.../aruangkerja/8ball $
