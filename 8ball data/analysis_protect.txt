@@ -1,0 +1,109 @@
+FILE: libprotect.so (1.08 MB)
+============================================================
+
+TOTAL STRING: 4715
+
+[0x00017962] _ZNKSt6__ndk111basic_regexIcNS_12regex_traitsIcEEE8__searchINS_9allocatorINS_9sub_matchIPKcEEEEEEbS8_S8_RNS_13match_resultsIS8_T_EENS_15regex_constants15match_flag_typeE
+[0x00017c4a] _Z13check_xp_fileNSt6__ndk112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE
+[0x0001802a] Java_io_adjoe_protection_DeviceUtils_registerToken
+[0x00018069] Java_io_adjoe_protection_DeviceUtils_drmInfo
+[0x00018096] Java_io_adjoe_protection_DeviceUtils_socName
+[0x00018c22] _ZTVNSt6__ndk128__begin_marked_subexpressionIcEE
+[0x00018cae] _ZTVNSt6__ndk126__end_marked_subexpressionIcEE
+[0x00018ea5] _ZNKSt6__ndk111basic_regexIcNS_12regex_traitsIcEEE21__match_at_start_ecmaINS_9allocatorINS_9sub_matchIPKcEEEEEEbS8_S8_RNS_13match_resultsIS8_T_EENS_15regex_constants15match_flag_typeEb
+[0x00019cc1] _ZNSt6__ndk128__begin_marked_subexpressionIcED0Ev
+[0x00019cf3] _ZNSt6__ndk126__end_marked_subexpressionIcED0Ev
+[0x00019fe1] _ZNKSt6__ndk111basic_regexIcNS_12regex_traitsIcEEE27__match_at_start_posix_subsINS_9allocatorINS_9sub_matchIPKcEEEEEEbS8_S8_RNS_13match_resultsIS8_T_EENS_15regex_constants15match_flag_typeEb
+[0x0001a0a0] _ZNKSt6__ndk111basic_regexIcNS_12regex_traitsIcEEE29__match_at_start_posix_nosubsINS_9allocatorINS_9sub_matchIPKcEEEEEEbS8_S8_RNS_13match_resultsIS8_T_EENS_15regex_constants15match_flag_typeEb
+[0x0001a161] _ZNSt6__ndk16vectorINS_9sub_matchIPKcEENS_9allocatorIS4_EEE18__assign_with_sizeB8ne180000IPS4_S9_EEvT_T0_l
+[0x0001aa46] _ZTINSt6__ndk128__begin_marked_subexpressionIcEE
+[0x0001aa77] _ZTSNSt6__ndk128__begin_marked_subexpressionIcEE
+[0x0001aaa8] _ZTINSt6__ndk126__end_marked_subexpressionIcEE
+[0x0001aad7] _ZTSNSt6__ndk126__end_marked_subexpressionIcEE
+[0x0001ae2d] _ZN7Reasons10emulatorIpE
+[0x0001ae46] _ZGVN7Reasons10emulatorIpE
+[0x0001af19] _ZN7Reasons13modelEmulatorE
+[0x0001af35] _ZGVN7Reasons13modelEmulatorE
+[0x0001b3b3] Java_io_adjoe_protection_DeviceUtils_isEmulator
+[0x0001b417] _ZN8EmulatorC2EP7_JNIEnvP7_jclassiP10_jmethodIDS3_P8_jobject
+[0x0001b454] _ZN8Emulator14doComplexCheckEv
+[0x0001b473] _ZN8EmulatorD2Ev
+[0x0001b484] _ZNSt6__ndk14pairIKNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEES6_EC2B8ne180000IRS7_RA20_KcTnNS_9enable_ifIXclsr10_CheckArgsE17__enable_implicitIT_T0_EEEiE4typeELi0EEEOSF_OSG_
+[0x0001b542] _ZNSt6__ndk14pairIKNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEES6_EC2B8ne180000IRS7_RA13_KcTnNS_9enable_ifIXclsr10_CheckArgsE17__enable_implicitIT_T0_EEEiE4typeELi0EEEOSF_OSG_
+[0x0001b656] _ZN8Emulator10checkBasicER12jBuildConsts
+[0x0001b67f] _ZN8Emulator13checkAdvancedEv
+[0x0001b69d] _ZN8Emulator16checkPackageNameEv
+[0x0001bac9] _ZN8Emulator11toLowerCaseERKNSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+[0x0001bb29] _ZN8Emulator16checkQemuDriversEv
+[0x0001bc21] _ZN8Emulator7checkIpEv
+[0x0001bc38] _ZN8Emulator14getHumanReasonERKNSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+[0x0001bd19] _ZZN8Emulator16checkQemuDriversEvENKUlRKNSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEE_clES8_
+[0x0001be74] _ZZN8Emulator7checkIpEvENKUlRKNSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEE_clES8_
+[0x0001f55d] _ZTISt16invalid_argument
+[0x0001f576] _ZNSt16invalid_argumentD1Ev
+[0x0001f592] _ZTVSt16invalid_argument
+[0x00020a5b] _ZNSt6__ndk115basic_streambufIcNS_11char_traitsIcEEE7sungetcEv
+[0x00022c2b] _ZNSt6__ndk115basic_streambufIwNS_11char_traitsIwEEE7sungetcEv
+[0x000260e8] _ZNKSt6__ndk17collateIcE7do_hashEPKcS3_
+[0x000261c4] _ZNKSt6__ndk17collateIwE7do_hashEPKwS3_
+[0x00029f22] _ZNSt6__ndk116__check_groupingERKNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPjS8_Rj
+[0x00032a8f] _ZNSt16invalid_argumentD0Ev
+[0x00032bda] _ZTSSt16invalid_argument
+[0x00032d14] _ZNSt16invalid_argumentD2Ev
+[0x00033b9a] libprotect.so
+[0x00052bdb] checkSelfPermission
+[0x00052c97] locale not supported
+[0x00052cac] The expression contained an invalid character class name.
+[0x00052d71] (base != 0) && "DW_EH_PE_datarel is invalid with a base of 0"
+[0x00052ee0] DW_EH_PE_funcrel pointer encoding not supported
+[0x0005320a] An invalid regex grammar has been requested.
+[0x0005335e] emulator_64_arm64
+[0x00053462] _Unwind_Resume() can't return
+[0x000535de] There was insufficient memory to determine whether the regular expression could match the specified character sequence.
+[0x000539ec] The expression contained an invalid character range, such as [b-a] in most encodings.
+[0x00053a8d] Invalid access!
+[0x00053ad4] void __cxxabiv1::scan_eh_tab(scan_results &, _Unwind_Action, bool, _Unwind_Exception *, _Unwind_Context *)
+[0x00053b5c] libunwind: unsupported .eh_frame_hdr version: %u at %lx
+[0x00053ca4] unsupported arm64 register
+[0x00053cbf] unsupported restore location for register
+[0x00053f18] Samsung
+[0x000541c3] There was insufficient memory to convert the expression into a finite state machine.
+[0x000542b0] unsupported restore location for float register
+[0x00054300] MODEL_EMULATOR
+[0x0005440b] DW_EH_PE_aligned pointer encoding not supported
+[0x00054511] string_view::substr
+[0x000547cf] The expression contained an invalid collating element name.
+[0x000549d2] One of *?+{ was not preceded by a valid regular expression.
+[0x00054cc3] EMULATOR_IP
+[0x00054d21] Surge S
+[0x00054e89] libunwind: unsupported .eh_frame_hdr at %lx: need at least 4 bytes of data but only got %zd
+[0x000551ac] DW_EH_PE_textrel pointer encoding not supported
+[0x000555e5] DW_EH_PE_datarel is invalid with a datarelBase of 0
+[0x000559d2] The expression contained an invalid back reference.
+[0x00055a0a] __cxa_guard_acquire detected recursive initialization: do you have a function-local static variable whose initialization depends on that function?
+[0x00053462] _Unwind_Resume
+[0x00055b9b] emulator64_arm64
+[0x00055bfc] The expression contained an invalid escaped character, or a trailing escape.
+[0x00055e7a] emulator64_x86_64_arm64
+[0x00055ed8] The parser did not consume the entire regular expression.
+[0x00055f9a] results.reason == _URC_HANDLER_FOUND
+[0x00056102] The expression contained an invalid range in a {} expression.
+[0x00018c26] NSt6__ndk128__begin_marked_subexpressionIcEE
+[0x00018cb2] NSt6__ndk126__end_marked_subexpressionIcEE
+[0x0001f561] St16invalid_argument
+[0x000595ac] N12_GLOBAL__N_116itanium_demangle18ArraySubscriptExprE
+[0x00059a3d] N12_GLOBAL__N_116itanium_demangle15ClosureTypeNameE
+[0x00059d0e] N12_GLOBAL__N_116itanium_demangle13SubobjectExprE
+[0x00059edc] N12_GLOBAL__N_116itanium_demangle19SpecialSubstitutionE
+[0x00059f14] N12_GLOBAL__N_116itanium_demangle27ExpandedSpecialSubstitutionE
+[0x0005a269] N12_GLOBAL__N_116itanium_demangle9DotSuffixE
+[0x00112d4e] .gnu.hash
+
+--- URL ENDPOINTS ---
+[0x00112c2f] https://android.googlesource.com/toolchain/llvm-project
+
+--- JNI FUNCTIONS ---
+  Java_io_adjoe_protection_DeviceUtils_drmInfo
+  Java_io_adjoe_protection_DeviceUtils_isEmulator
+  Java_io_adjoe_protection_DeviceUtils_registerToken
+  Java_io_adjoe_protection_DeviceUtils_socName
