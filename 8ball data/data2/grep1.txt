@@ -1,0 +1,52 @@
+~/.../aruangkerja/8ball $ grep -rn "LoginActivity\|login\|username\|password" smali*/ 2>/dev/null | head -50
+smali/androidx/autofill/HintConstants.smali:40:.field public static final AUTOFILL_HINT_PASSWORD:Ljava/lang/String; = "password"
+smali/androidx/autofill/HintConstants.smali:87:.field public static final AUTOFILL_HINT_USERNAME:Ljava/lang/String; = "username"
+smali/androidx/compose/foundation/text/CoreTextFieldKt$CoreTextField$semanticsModifier$1.smali:155:    invoke-static {p1}, Landroidx/compose/ui/semantics/SemanticsPropertiesKt;->password(Landroidx/compose/ui/semantics/SemanticsPropertyReceiver;)V
+smali/androidx/compose/ui/autofill/AndroidAutofillType_androidKt.smali:77:    const-string/jumbo v2, "username"
+smali/androidx/compose/ui/autofill/AndroidAutofillType_androidKt.smali:90:    const-string v2, "password"
+smali/androidx/compose/ui/semantics/SemanticsPropertiesKt.smali:159:        "password",
+smali/androidx/compose/ui/semantics/SemanticsPropertiesKt.smali:1850:.method public static final password(Landroidx/compose/ui/semantics/SemanticsPropertyReceiver;)V
+smali/androidx/core/view/accessibility/AccessibilityNodeInfoCompat.smali:4717:    const-string v1, "; password: "
+smali/androidx/credentials/CreatePasswordRequest$Companion.smali:38:        "password",
+smali/androidx/credentials/CreatePasswordRequest$Companion.smali:204:    const-string v0, "password"
+smali/androidx/credentials/CreatePasswordRequest.smali:26:        "password",
+smali/androidx/credentials/CreatePasswordRequest.smali:67:.field private final password:Ljava/lang/String;
+smali/androidx/credentials/CreatePasswordRequest.smali:92:    const-string v0, "password"
+smali/androidx/credentials/CreatePasswordRequest.smali:124:    const-string v0, "password"
+smali/androidx/credentials/CreatePasswordRequest.smali:158:    const-string v0, "password"
+smali/androidx/credentials/CreatePasswordRequest.smali:208:    const-string v0, "password"
+smali/androidx/credentials/CreatePasswordRequest.smali:242:    const-string v0, "password"
+smali/androidx/credentials/CreatePasswordRequest.smali:366:    iput-object v10, v9, Landroidx/credentials/CreatePasswordRequest;->password:Ljava/lang/String;
+smali/androidx/credentials/CreatePasswordRequest.smali:384:    const-string v1, "password should not be empty"
+smali/androidx/credentials/CreatePasswordRequest.smali:543:    iget-object v0, p0, Landroidx/credentials/CreatePasswordRequest;->password:Ljava/lang/String;
+smali/androidx/credentials/R$drawable.smali:21:.field public static final ic_password:I = 0x7f080185
+smali/androidx/credentials/PasswordCredential$Companion.smali:35:        "password",
+smali/androidx/credentials/PasswordCredential$Companion.smali:126:    const-string v0, "password"
+smali/androidx/credentials/PasswordCredential.smali:26:        "password",
+smali/androidx/credentials/PasswordCredential.smali:60:.field private final password:Ljava/lang/String;
+smali/androidx/credentials/PasswordCredential.smali:85:    const-string v0, "password"
+smali/androidx/credentials/PasswordCredential.smali:113:    iput-object p2, p0, Landroidx/credentials/PasswordCredential;->password:Ljava/lang/String;
+smali/androidx/credentials/PasswordCredential.smali:129:    const-string p2, "password should not be empty"
+smali/androidx/credentials/PasswordCredential.smali:191:    iget-object v0, p0, Landroidx/credentials/PasswordCredential;->password:Ljava/lang/String;
+smali/androidx/credentials/playservices/CredentialProviderPlayServicesImpl.smali:435:    const-string p2, "Create Credential request is unsupported, not password or publickeycredential"
+smali/androidx/credentials/playservices/HiddenActivity$handleCreatePassword$1$1.smali:146:    const-string v3, "During save password, found UI intent sender failure: "
+smali/androidx/credentials/playservices/HiddenActivity.smali:469:    const-string v1, "During save password, params is null, nothing to launch for create password"
+smali/androidx/credentials/playservices/HiddenActivity.smali:552:    const-string v3, "During save password, found password failure response from one tap "
+smali/androidx/credentials/playservices/controllers/BeginSignIn/CredentialProviderBeginSignInController.smali:457:    const-string v0, "Credential returned but no google Id or password or passkey found"
+smali/androidx/credentials/internal/FrameworkImplHelper$Companion.smali:94:    sget p1, Landroidx/credentials/R$drawable;->ic_password:I
+smali/androidx/credentials/provider/CreateEntry$Builder.smali:39:        "passwordCredentialCount",
+smali/androidx/credentials/provider/CreateEntry$Builder.smali:87:.field private passwordCredentialCount:Ljava/lang/Integer;
+smali/androidx/credentials/provider/CreateEntry$Builder.smali:250:    iput-object v0, p0, Landroidx/credentials/provider/CreateEntry$Builder;->passwordCredentialCount:Ljava/lang/Integer;
+smali/androidx/credentials/provider/CreateEntry.smali:36:        "passwordCredentialCount",
+smali/androidx/credentials/provider/PasswordCredentialEntry$Builder.smali:25:        "username",
+smali/androidx/credentials/provider/PasswordCredentialEntry$Builder.smali:80:.field private final username:Ljava/lang/CharSequence;
+smali/androidx/credentials/provider/PasswordCredentialEntry$Builder.smali:91:    const-string/jumbo v0, "username"
+smali/androidx/credentials/provider/PasswordCredentialEntry$Builder.smali:110:    iput-object p2, p0, Landroidx/credentials/provider/PasswordCredentialEntry$Builder;->username:Ljava/lang/CharSequence;
+smali/androidx/credentials/provider/PasswordCredentialEntry$Builder.smali:136:    sget v2, Landroidx/credentials/R$drawable;->ic_password:I
+smali/androidx/credentials/provider/PasswordCredentialEntry$Builder.smali:164:    iget-object v4, v0, Landroidx/credentials/provider/PasswordCredentialEntry$Builder;->username:Ljava/lang/CharSequence;
+smali/androidx/credentials/provider/PasswordCredentialEntry$Api28Impl.smali:508:    sget v0, Landroidx/credentials/R$drawable;->ic_password:I
+smali/androidx/credentials/provider/PasswordCredentialEntry.smali:29:        "username",
+smali/androidx/credentials/provider/PasswordCredentialEntry.smali:138:.field private final username:Ljava/lang/CharSequence;
+smali/androidx/credentials/provider/PasswordCredentialEntry.smali:162:            expression = "PasswordCredentialEntry(context, username, pendingIntent, beginGetPasswordOption, displayName, lastUsedTime, icon, isAutoSelectAllowed, affiliatedDomain, isDefaultIconPreferredAsSingleProvider)"
+smali/androidx/credentials/provider/PasswordCredentialEntry.smali:189:    const-string/jumbo v4, "username"
+~/.../aruangkerja/8ball $
