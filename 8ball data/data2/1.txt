@@ -1,0 +1,51 @@
+        <intent>
+            <action
+                android:name="android.intent.action.MAIN" />
+            <category
+                android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+    <!-- Mengizinkan apl mencegah ponsel tidur. -->
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK" />
+    <!-- Memungkinkan aplikasi melihat informasi tentang koneksi jaringan, misalnya jaringan yang ada dan terhubung. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE" />
+--
+        <intent>
+            <action
+                android:name="android.intent.action.MAIN" />
+            <category
+                android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action
+                android:name="com.digitalturbine.ignite.cl.IgniteRemoteService" />
+        </intent>
+        <intent>
+            <action
+                android:name="android.intent.action.MAIN" />
+        </intent>
+        <intent>
+            <action
+                android:name="android.intent.action.VIEW" />
+        </intent>
+    </queries>
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <!-- Mengizinkan aplikasi mengakses AdServices Topics API. -->
+    <uses-permission
+--
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category

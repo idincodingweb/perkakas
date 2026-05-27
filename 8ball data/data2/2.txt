@@ -1,0 +1,30 @@
+smali/com/miniclip/mcuseracquisition/MCAppsFlyerWrapper$9$1.smali:89:    invoke-virtual/range {v0 .. v7}, Lcom/appsflyer/AppsFlyerLib;->validateAndLogInAppPurchase(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+smali/com/miniclip/mcuseracquisition/MCAppsFlyerWrapper.smali:355:    invoke-virtual {v0, v1}, Lcom/appsflyer/api/PurchaseClient$Builder;->autoLogInApps(Z)Lcom/appsflyer/api/PurchaseClient$Builder;
+smali/com/miniclip/nativeJNI/cocojava$11$1.smali:11:    value = Lcom/miniclip/nativeJNI/cocojava$11;->onDismiss(Landroid/content/DialogInterface;)V
+smali/com/miniclip/nativeJNI/cocojava$11.smali:6:.implements Landroid/content/DialogInterface$OnDismissListener;
+smali/com/miniclip/nativeJNI/cocojava$11.smali:38:.method public onDismiss(Landroid/content/DialogInterface;)V
+smali/com/miniclip/nativeJNI/cocojava$6.smali:6:.implements Landroid/content/DialogInterface$OnClickListener;
+smali/com/miniclip/nativeJNI/cocojava$6.smali:38:.method public onClick(Landroid/content/DialogInterface;I)V
+smali/com/miniclip/nativeJNI/cocojava$6.smali:42:    invoke-interface {p1}, Landroid/content/DialogInterface;->cancel()V
+smali/com/miniclip/nativeJNI/cocojava$5.smali:6:.implements Landroid/content/DialogInterface$OnKeyListener;
+smali/com/miniclip/nativeJNI/cocojava$5.smali:47:.method public onKey(Landroid/content/DialogInterface;ILandroid/view/KeyEvent;)Z
+smali/com/miniclip/nativeJNI/cocojava.smali:6:.implements Landroid/content/DialogInterface$OnClickListener;
+smali/com/miniclip/nativeJNI/cocojava.smali:1227:    invoke-virtual {p2, p3, p0}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/nativeJNI/cocojava.smali:1244:    invoke-virtual {p2, p3, p0}, Landroid/app/AlertDialog$Builder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/nativeJNI/cocojava.smali:1261:    invoke-virtual {p2, p3, p0}, Landroid/app/AlertDialog$Builder;->setNeutralButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/nativeJNI/cocojava.smali:1310:    invoke-virtual {v0, p2, p3, p0}, Landroid/app/AlertDialog;->setButton(ILjava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
+smali/com/miniclip/nativeJNI/cocojava.smali:1353:    invoke-virtual {p2, p1}, Landroid/app/Dialog;->setOnKeyListener(Landroid/content/DialogInterface$OnKeyListener;)V
+smali/com/miniclip/nativeJNI/cocojava.smali:1449:    invoke-virtual {v1, v3, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/nativeJNI/cocojava.smali:1793:.method public onClick(Landroid/content/DialogInterface;I)V
+smali/com/miniclip/nativeJNI/cocojava.smali:1975:    invoke-virtual {p2, p1}, Landroid/app/DatePickerDialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
+smali/com/miniclip/newsfeed/NewsfeedActivity$4.smali:6:.implements Landroid/content/DialogInterface$OnDismissListener;
+smali/com/miniclip/newsfeed/NewsfeedActivity$4.smali:38:.method public onDismiss(Landroid/content/DialogInterface;)V
+smali/com/miniclip/newsfeed/NewsfeedActivity.smali:1113:    invoke-virtual {v0, v1}, Landroid/app/Dialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
+smali/com/miniclip/platform/MCApplication$1.smali:76:    invoke-virtual {v0, v2, v1}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/platform/MCApplication$1$1.smali:6:.implements Landroid/content/DialogInterface$OnClickListener;
+smali/com/miniclip/platform/MCApplication$1$1.smali:38:.method public onClick(Landroid/content/DialogInterface;I)V
+smali/com/miniclip/platform/MCApplication$1$1.smali:80:    invoke-interface {p1}, Landroid/content/DialogInterface;->cancel()V
+smali/com/miniclip/platform/MCApplication$5.smali:69:    invoke-virtual {v0, v2, v1}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/platform/MCApplication$5.smali:78:    invoke-virtual {v0, v2, v1}, Landroid/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+smali/com/miniclip/platform/MCApplication$5$1.smali:6:.implements Landroid/content/DialogInterface$OnClickListener;
+smali/com/miniclip/platform/MCApplication$5$1.smali:38:.method public onClick(Landroid/content/DialogInterface;I)V
