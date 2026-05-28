@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    android:compileSdkVersion="35"
+    android:compileSdkVersionCodename="15"
+    package="com.snake"
+    platformBuildVersionCode="35"
+    platformBuildVersionName="15"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries>
+        <intent>
+            <action
+                android:name="android.intent.action.PROCESS_TEXT" />
+            <data
+                android:mimeType="text/plain" />
+        </intent>
+    </queries>
+    <!-- Memungkinkan aplikasi melihat informasi tentang koneksi jaringan, misalnya jaringan yang ada dan terhubung. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Mengizinkan aplikasi untuk menampilkan notifikasi -->
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Mengizinkan apl mencegah ponsel tidur. -->
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK" />
+    <!-- Mengizinkan aplikasi menerima pesan dari cloud ke perangkat, yang dikirimkan oleh layanan aplikasi. Penggunaan layanan ini akan menyebabkan penggunaan data. Aplikasi berbahaya dapat menyebabkan penggunaan data yang berlebihan. -->
+    <uses-permission
+        android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- Mengizinkan aplikasi menggunakan layanan latar depan dengan jenis "specialUse" -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Mengizinkan aplikasi menggunakan layanan latar depan dengan jenis "dataSync" -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <!-- Mengizinkan aplikasi melihat semua paket yang diinstal. -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS" />
+    <uses-permission
+        android:name="android.permission.BIND_EXTERNAL_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SOCIAL_STREAM" />
+    <uses-permission
+        android:name="android.permission.READ_SOCIAL_STREAM" />
+    <uses-permission
+        android:name="android.permission.READ_PROFILE" />
+    <uses-permission
+        android:name="android.permission.WRITE_PROFILE" />
+    <uses-permission
+        android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission
+        android:name="android.permission.WRITE_USER_DICTIONARY" />
+    <uses-permission
+        android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission
+        android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <!-- Aplikasi ini akan diberi tahu saat screenshot diambil dan aplikasi sedang digunakan. -->
+    <uses-permission
+        android:name="android.permission.DETECT_SCREEN_CAPTURE" />
+    <uses-permission
+        android:name="com.samsung.svoice.sync.READ_DATABASE" />
+    <uses-permission
+        android:name="com.samsung.svoice.sync.ACCESS_SERVICE" />
+    <uses-permission
+        android:name="com.samsung.svoice.sync.WRITE_DATABASE" />
+    <uses-permission
+        android:name="com.sec.android.app.voicenote.Controller" />
+    <uses-permission
+        android:name="com.sec.android.permission.VOIP_INTERFACE" />
+    <uses-permission
+        android:name="com.sec.android.permission.LAUNCH_PERSONAL_PAGE_SERVICE" />
+    <uses-permission
+        android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
+    <uses-permission
+        android:name="com.samsung.android.providers.context.permission.READ_RECORD_AUDIO" />
+    <uses-permission
+        android:name="com.samsung.android.providers.context.permission.WRITE_RECORD_AUDIO" />
+    <uses-permission
+        android:name="com.sec.android.settings.permission.SOFT_RESET" />
+    <uses-permission
+        android:name="sec.android.permission.READ_MSG_PREF" />
+    <uses-permission
+        android:name="com.samsung.android.scloud.backup.lib.read" />
+    <uses-permission
+        android:name="com.samsung.android.scloud.backup.lib.write" />
+    <!-- Mengizinkan apl menyetel alarm di apl jam alarm yang terpasang. Beberapa apl jam alarm mungkin tidak menerapkan fitur ini. -->
+    <uses-permission
+        android:name="com.android.alarm.permission.SET_ALARM" />
+    <!-- Mengizinkan apl menambahkan pesan ke kotak masuk untuk pesan suara Anda. -->
+    <uses-permission
+        android:name="com.android.voicemail.permission.ADD_VOICEMAIL" />
+    <uses-permission
+        android:name="com.android.voicemail.permission.READ_WRITE_ALL_VOICEMAIL" />
+    <uses-permission
+        android:name="com.huawei.authentication.HW_ACCESS_AUTH_SERVICE" />
+    <!-- Mengizinkan pengguna membeli item melalui Google Play dari dalam apl ini. -->
+    <uses-permission
+        android:name="com.android.vending.BILLING" />
+    <!-- Dapat memeriksa apakah Anda memiliki lisensi untuk aplikasi ini dari Google Play. -->
+    <uses-permission
+        android:name="com.android.vending.CHECK_LICENSE" />
+    <uses-permission
+        android:name="com.google.android.providers.talk.permission.READ_ONLY" />
+    <uses-permission
+        android:name="com.google.android.providers.talk.permission.WRITE_ONLY" />
+    <!-- Mengizinkan aplikasi menerima pembaruan berkala dari tingkat aktivitas Anda dari Google, misalnya saat Anda berjalan, mengemudi, bersepeda, atau diam. -->
+    <uses-permission
+        android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <!-- Mengizinkan aplikasi menerima notifikasi saat ID iklan atau preferensi batasi pelacakan iklan pengguna diperbarui. -->
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID_NOTIFICATION" />
+    <!-- Mengizinkan aplikasi ini untuk membaca data konfigurasi layanan Google. -->
+    <uses-permission
+        android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!-- Mengizinkan aplikasi menambahkan pintasan Layar Utama tanpa tindakan dari pengguna. -->
+    <uses-permission
+        android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <!-- Mengizinkan aplikasi menghapus pintasan Layar Utama tanpa tindakan dari pengguna. -->
+    <uses-permission
+        android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission
+        android:name="android.permission.READ_APP_BADGE" />
+    <uses-permission
+        android:name="com.google.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.oppo.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission
+        android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+    <uses-permission
+        android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+    <uses-permission
+        android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.sec.android.provider.badge.permission.READ" />
+    <uses-permission
+        android:name="com.sec.android.provider.badge.permission.WRITE" />
+    <uses-permission
+        android:name="com.htc.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
+    <uses-permission
+        android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+    <uses-permission
+        android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
+    <uses-permission
+        android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
+    <uses-permission
+        android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
+    <uses-permission
+        android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <uses-permission
+        android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission
+        android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+    <!-- Mengizinkan aplikasi membaca setelan dan pintasan di layar utama. -->
+    <uses-permission
+        android:name="com.android.launcher3.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.android.launcher2.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.teslacoilsw.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.actionlauncher.playstore.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.mx.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.anddoes.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.apusapps.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.tsf.shell.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.htc.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.lenovo.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.bbk.launcher2.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.s.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="cn.nubia.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission
+        android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <!-- Memungkinkan aplikasi membuat soket jaringan dan menggunakan protokol jaringan khusus. Browser dan aplikasi lain menyediakan sarana untuk mengirim data ke internet sehingga izin ini tidak diperlukan untuk mengirim data ke internet. -->
+    <uses-permission
+        android:name="android.permission.INTERNET" />
+    <!-- Aplikasi ini dapat mengambil gambar dan merekam video menggunakan kamera saat aplikasi sedang digunakan. -->
+    <uses-permission
+        android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.FLASHLIGHT" />
+    <!-- Aplikasi ini dapat mengambil gambar dan merekam video menggunakan kamera saat aplikasi sedang digunakan. -->
+    <uses-permission
+        android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <!-- Aplikasi ini bisa mendapatkan perkiraan lokasi Anda dari layanan lokasi saat aplikasi sedang digunakan. Layanan lokasi untuk perangkat harus diaktifkan agar aplikasi bisa mendapatkan lokasi. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Aplikasi ini bisa mendapatkan lokasi pasti Anda dari layanan lokasi saat aplikasi sedang digunakan. Layanan lokasi untuk perangkat harus diaktifkan agar aplikasi bisa mendapatkan lokasi. Ini dapat meningkatkan penggunaan baterai. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Memungkinkan aplikasi mengakses perintah penyedia lokasi ekstra. Tindakan ini memungkinkan aplikasi mengganggu pengoperasian GPS atau sumber lokasi lain. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- Memungkinkan aplikasi melihat informasi tentang jaringan Wi-Fi, misalnya apakah Wi-Fi diaktifkan dan nama perangkat Wi-Fi yang terhubung. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Mengizinkan apl mengubah keadaan konektivitas jaringan. -->
+    <uses-permission
+        android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- Memungkinkan aplikasi menerima paket yang dikirim ke semua perangkat melalui jaringan Wi-Fi menggunakan alamat multicast, bukan hanya ponsel Anda. Izin ini akan menggunakan lebih banyak daya daripada mode selain multicast. -->
+    <uses-permission
+        android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <!-- Memungkinkan aplikasi menyambung ke dan memutus dari titik akses Wi-Fi, dan mengubah konfigurasi perangkat untuk jaringan Wi-Fi. -->
+    <uses-permission
+        android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- Mengizinkan aplikasi menulis konten penyimpanan bersama Anda. -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Mengizinkan aplikasi membaca konten penyimpanan bersama Anda. -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.BATTERY_STATS" />
+    <!-- Mengizinkan aplikasi mengakses data sensor tubuh, seperti detak jantung, suhu, dan persentase oksigen dalam darah, saat aplikasi sedang digunakan. -->
+    <uses-permission
+        android:name="android.permission.BODY_SENSORS" />
+    <!-- Memungkinkan aplikasi mengirim siaran permanen, yang tetap ada setelah siaran berakhir. Penggunaan yang berlebihan dapat membuat ponsel menjadi lambat atau tidak stabil dengan memicu penggunaan memori yang terlalu banyak. -->
+    <uses-permission
+        android:name="android.permission.BROADCAST_STICKY" />
+    <!-- Memungkinkan aplikasi menonaktifkan kunci tombol dan keamanan sandi apa pun yang terkait. Misalnya, ponsel menonaktifkan kunci tombol saat menerima panggilan telepon masuk, kemudian mengaktifkan kembali kunci tombol ketika panggilan selesai. -->
+    <uses-permission
+        android:name="android.permission.DISABLE_KEYGUARD" />
+    <!-- Mengizinkan apl memperluas atau menciutkan bilah status. -->
+    <uses-permission
+        android:name="android.permission.EXPAND_STATUS_BAR" />
+    <!-- Memungkinkan aplikasi mendapatkan daftar akun yang dikenal oleh ponsel. Ini mungkin termasuk akun yang dibuat oleh aplikasi yang telah Anda instal. -->
+    <uses-permission
+        android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission
+        android:name="android.permission.MANAGE_ACCOUNTS" />
+    <!-- Memungkinkan aplikasi mengakses fitur telepon perangkat. Izin ini memungkinkan aplikasi menentukan nomor telepon dan ID perangkat, apakah suatu panggilan aktif atau tidak, dan nomor jarak jauh yang terhubung oleh sebuah panggilan. -->
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- Mengizinkan apl memodifikasi data setelan sistem. Apl berbahaya dapat merusak konfigurasi sistem anda. -->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS" />
+    <!-- Memungkinkan aplikasi mengambil informasi tentang tugas yang dijalankan saat ini dan baru-baru ini. Izin ini memungkinkan aplikasi menemukan informasi tentang aplikasi mana yang digunakan pada perangkat. -->
+    <uses-permission
+        android:name="android.permission.GET_TASKS" />
+    <!-- Memungkinkan aplikasi mengakhiri proses latar belakang aplikasi lain. Izin ini dapat menyebabkan aplikasi lain berhenti berjalan. -->
+    <uses-permission
+        android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <!-- Memungkinkan aplikasi memindah tugas ke latar depan dan latar belakang. Aplikasi dapat melakukannya tanpa masukan dari Anda. -->
+    <uses-permission
+        android:name="android.permission.REORDER_TASKS" />
+    <!-- Memungkinkan aplikasi membuat bagian dari dirinya sendiri terus-menerus berada dalam memori. Izin ini dapat membatasi memori yang tersedia untuk aplikasi lain sehingga menjadikan ponsel lambat. -->
+    <uses-permission
+        android:name="android.permission.PERSISTENT_ACTIVITY" />
+    <!-- Aplikasi ini dapat merekam audio menggunakan mikrofon saat aplikasi sedang digunakan. -->
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO" />
+    <!-- Mengizinkan aplikasi terhubung ke perangkat Bluetooth yang disambungkan -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!-- Mengizinkan aplikasi menemukan dan menyambungkan perangkat Bluetooth di sekitar -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN" />
+    <!-- Memungkinkan aplikasi melihat konfigurasi Bluetooth di ponsel, dan membuat serta menerima sambungan dengan perangkat yang disandingkan. -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH" />
+    <!-- Mengizinkan apl mengonfigurasi ponsel Bluetooth lokal, dan menemukan serta menyandingkan dengan perangkat jarak jauh. -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- Mengizinkan apl berkomunikasi dengan tag, kartu, dan alat pembaca Komunikasi Nirkabel Jarak Dekat (NFC). -->
+    <uses-permission
+        android:name="android.permission.NFC" />
+    <!-- Memungkinkan aplikasi mengubah setelan audio global, misalnya volume dan pengeras suara mana yang digunakan untuk keluaran. -->
+    <uses-permission
+        android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- Mengizinkan aplikasi untuk mengendalikan vibrator. -->
+    <uses-permission
+        android:name="android.permission.VIBRATE" />
+    <!-- Mengizinkan aplikasi untuk menggunakan hardware sidik jari untuk autentikasi -->
+    <uses-permission
+        android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission
+        android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    <uses-permission
+        android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
+    <uses-permission
+        android:name="android.permission.CLEAR_APP_CACHE" />
+    <!-- Mengizinkan apl mengambil kode, data, dan ukuran temboloknya -->
+    <uses-permission
+        android:name="android.permission.GET_PACKAGE_SIZE" />
+    <!-- Memungkinkan aplikasi mengubah setelan sinkronisasi untuk sebuah akun. Misalnya, izin ini dapat digunakan untuk mengaktifkan sinkronisasi dari aplikasi Orang dengan sebuah akun. -->
+    <uses-permission
+        android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <!-- Memungkinkan aplikasi membaca setelan sinkronisasi untuk sebuah akun. Misalnya, izin ini dapat menentukan apakah aplikasi Orang disinkronkan dengan sebuah akun. -->
+    <uses-permission
+        android:name="android.permission.READ_SYNC_SETTINGS" />
+    <!-- Memungkinkan aplikasi membaca statistik sinkronisasi untuk sebuah akun, termasuk histori kejadian sinkronisasi dan berapa banyak data yang disinkronkan. -->
+    <uses-permission
+        android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission
+        android:name="android.permission.SUBSCRIBED_FEEDS_READ" />
+    <uses-permission
+        android:name="android.permission.SUBSCRIBED_FEEDS_WRITE" />
+    <!-- Aplikasi ini dapat menambahkan, menghapus, atau mengubah acara kalender di ponsel. Aplikasi ini dapat mengirim pesan yang kelihatannya berasal dari pemilik kalender, atau mengubah acara tanpa memberi tahu pemilik. -->
+    <uses-permission
+        android:name="android.permission.WRITE_CALENDAR" />
+    <!-- Aplikasi ini dapat membaca semua acara kalender yang tersimpan di ponsel dan membagikan atau menyimpan data kalender. -->
+    <uses-permission
+        android:name="android.permission.READ_CALENDAR" />
+    <!-- Mengizinkan aplikasi membaca data tentang kontak yang disimpan di ponsel Anda. Aplikasi juga akan memiliki akses ke akun di ponsel Anda yang telah membuat kontak. Ini mungkin mencakup akun yang dibuat oleh aplikasi yang telah diinstal. Izin ini mengizinkan aplikasi menyimpan data kontak, dan aplikasi berbahaya dapat membagikan data kontak tanpa sepengetahuan Anda. -->
+    <uses-permission
+        android:name="android.permission.READ_CONTACTS" />
+    <!-- Mengizinkan aplikasi mengubah data tentang kontak yang disimpan di ponsel Anda. Izin ini mengizinkan aplikasi menghapus data kontak. -->
+    <uses-permission
+        android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS" />
+    <!-- Memungkinkan aplikasi mengakhiri proses latar belakang aplikasi lain. Izin ini dapat menyebabkan aplikasi lain berhenti berjalan. -->
+    <uses-permission
+        android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.SET_TIME" />
+    <!-- Mengizinkan apl mengubah zona waktu pada ponsel. -->
+    <uses-permission
+        android:name="android.permission.SET_TIME_ZONE" />
+    <!-- Mengizinkan apl menyetel wallpaper sistem. -->
+    <uses-permission
+        android:name="android.permission.SET_WALLPAPER" />
+    <!-- Mengizinkan apl menyetel petunjuk ukuran wallpaper sistem. -->
+    <uses-permission
+        android:name="android.permission.SET_WALLPAPER_HINTS" />
+    <!-- Memungkinkan aplikasi menggunakan pemancar inframerah ponsel. -->
+    <uses-permission
+        android:name="android.permission.TRANSMIT_IR" />
+    <!-- Izinkan aplikasi melakukan dan menerima panggilan SIP. -->
+    <uses-permission
+        android:name="android.permission.USE_SIP" />
+    <uses-permission
+        android:name="android.permission.GET_INTENT_SENDER_INTENT" />
+    <uses-permission
+        android:name="android.permission.BIND_DIRECTORY_SEARCH" />
+    <uses-permission
+        android:name="android.permission.UPDATE_APP_OPS_STATS" />
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.CLEAR_APP_USER_DATA" />
+    <uses-permission
+        android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission
+        android:name="android.permission.ACCESS_CACHE_FILESYSTEM" />
+    <uses-permission
+        android:name="android.permission.DEVICE_POWER" />
+    <uses-permission
+        android:name="android.permission.BIND_APPWIDGET" />
+    <uses-permission
+        android:name="android.permission.ACCOUNT_MANAGER" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <!-- Memungkinkan aplikasi membaca sesi pemasangan. Tindakan ini memungkinkannya melihat detail tentang pemasangan paket aktif. -->
+    <uses-permission
+        android:name="android.permission.READ_INSTALL_SESSIONS" />
+    <uses-permission
+        android:name="android.permission.READ_OWNER_DATA" />
+    <!-- Mengizinkan aplikasi membaca pesan siaran seluler yang diterima perangkat Anda. Notifikasi siaran seluler dikirimkan di beberapa lokasi untuk memperingatkan Anda tentang situasi darurat. Aplikasi berbahaya dapat mengganggu kinerja atau operasi perangkat Anda saat siaran seluler darurat diterima. -->
+    <uses-permission
+        android:name="android.permission.READ_CELL_BROADCASTS" />
+    <uses-permission
+        android:name="android.permission.WRITE_CLIPS" />
+    <uses-permission
+        android:name="android.permission.READ_CLIPS" />
+    <uses-permission
+        android:name="android.permission.GET_CLIPS" />
+    <uses-permission
+        android:name="android.permission.WRITE_OWNER_DATA" />
+    <uses-permission
+        android:name="android.permission.ACCESS_GPS" />
+    <uses-permission
+        android:name="android.permission.ACCESS_WIMAX_STATE" />
+    <!-- Mengizinkan aplikasi mengakses pengelola download dan menggunakannya untuk mendownload file. Aplikasi berbahaya dapat menggunakan ini untuk mengganggu download dan mengakses informasi pribadi. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission
+        android:name="android.permission.CHANGE_WIMAX_STATE" />
+    <!-- Mengizinkan apl mendownload file melalui pengelola download tanpa menampilkan pemberitahuan apa pun kepada pengguna. -->
+    <uses-permission
+        android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <!-- Mengizinkan aplikasi memanggil nomor telepon tanpa intervensi Anda. Hal ini dapat mengakibatkan adanya biaya atau panggilan yang tidak terduga. Perhatikan bahwa hal ini tidak memungkinkan aplikasi menghubungi nomor darurat. Anda dapat dikenai biaya oleh aplikasi berbahaya dengan melakukan panggilan tanpa konfirmasi dari Anda, atau menghubungi kode operator yang menyebabkan panggilan masuk dialihkan secara otomatis ke nomor lain. -->
+    <uses-permission
+        android:name="android.permission.CALL_PHONE" />
+    <!-- Memungkinkan aplikasi mengirim pesan SMS. Izin ini dapat mengakibatkan biaya tak terduga. Aplikasi berbahaya dapat membebankan biaya kepada Anda dengan mengirim pesan tanpa konfirmasi dari Anda. -->
+    <uses-permission
+        android:name="android.permission.SEND_SMS" />
+    <!-- Memungkinkan aplikasi melihat nomor yang dihubungi saat melakukan panggilan keluar dengan opsi untuk mengalihkan panggilan ke nomor lain atau membatalkan panggilan sepenuhnya. -->
+    <uses-permission
+        android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- Memungkinkan aplikasi melihat nomor yang dihubungi saat melakukan panggilan keluar dengan opsi untuk mengalihkan panggilan ke nomor lain atau membatalkan panggilan sepenuhnya. -->
+    <uses-permission
+        android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- Mengizinkan aplikasi memanggil nomor telepon tanpa intervensi Anda. Hal ini dapat mengakibatkan adanya biaya atau panggilan yang tidak terduga. Perhatikan bahwa hal ini tidak memungkinkan aplikasi menghubungi nomor darurat. Anda dapat dikenai biaya oleh aplikasi berbahaya dengan melakukan panggilan tanpa konfirmasi dari Anda, atau menghubungi kode operator yang menyebabkan panggilan masuk dialihkan secara otomatis ke nomor lain. -->
+    <uses-permission
+        android:name="android.permission.CALL_PHONE" />
+    <!-- Aplikasi ini dapat membaca histori panggilan. -->
+    <uses-permission
+        android:name="android.permission.READ_CALL_LOG" />
+    <!-- Memungkinkan apl memodifikasi log panggilan ponsel Anda, termasuk data tentang panggilan masuk dan keluar. Apl berbahaya dapat menggunakan ini untuk menghapus atau memodifikasi log panggilan Anda. -->
+    <uses-permission
+        android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission
+        android:name="android.provider.Telephony.SMS_RECEIVED" />
+    <uses-permission
+        android:name="android.permission.BROADCAST_WAP_PUSH" />
+    <uses-permission
+        android:name="android.permission.BROADCAST_SMS" />
+    <uses-permission
+        android:name="android.permission.SEND_RESPOND_VIA_MESSAGE" />
+    <uses-permission
+        android:name="android.permission.GET_INTENT_SENDER_INTENT" />
+    <!-- Mengizinkan aplikasi menggunakan layanan di latar depan. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+    <!-- Mengizinkan aplikasi melihat semua paket yang diinstal. -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <!-- Aplikasi ini dapat meminta sistem untuk menyembunyikan overlay yang berasal dari aplikasi lain agar tidak ditampilkan di atasnya. -->
+    <uses-permission
+        android:name="android.permission.HIDE_OVERLAY_WINDOWS" />
+    <!-- Mengizinkan aplikasi penayang mengakses ID iklan yang valid secara langsung atau tidak langsung. -->
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID" />
+    <!-- Mengizinkan aplikasi mengakses AdServices Attribution API. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+    <!-- Mengizinkan aplikasi mengakses AdId API. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+    <!-- Memungkinkan aplikasi mengambil informasi perujuk penginstalannya. -->
+    <uses-permission
+        android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <permission
+        android:name="com.snake.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+    <uses-permission
+        android:name="com.snake.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <application
+        android:label="Snake Engine"
+        android:icon="@mipmap/ic_launcher"
+        android:name="com.snake.App"
+        android:vmSafeMode="true"
+        android:extractNativeLibs="false"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <activity
+            android:theme="@style/LaunchTheme"
+            android:name="com.Entry"
+            android:exported="true"
+            android:taskAffinity=""
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:windowSoftInputMode="adjustResize"
+            android:hardwareAccelerated="true">
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+            <meta-data
+                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+                android:value="true" />
+        </receiver>
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="false"
+            android:directBootAware="true">
+            <intent-filter
+                android:priority="-500">
+                <action
+                    android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:exported="false"
+            android:directBootAware="true">
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <provider
+            android:name="com.snake.helper.SystemCallProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:process="@string/engine_service_name"
+            android:authorities="com.snake.helper.SystemCallProvider" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:authorities="com.snake.fileprovider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepath" />
+        </provider>
+        <provider
+            android:name="com.snake.helper.FileProvider"
+            android:exported="false"
+            android:authorities="com.snake.helper.FileProvider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepath" />
+        </provider>
+        <receiver
+            android:name="com.snake.helper.ProxyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:process="@string/engine_service_name">
+            <intent-filter>
+                <action
+                    android:name="com.snake.stub_receiver" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="com.snake.helper.DaemonService"
+            android:exported="false"
+            android:process="@string/engine_service_name"
+            android:foregroundServiceType="dataSync|specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="snake_engine" />
+        </service>
+        <service
+            android:name="com.snake.helper.DaemonService$DaemonInnerService"
+            android:exported="false"
+            android:process="@string/engine_service_name"
+            android:foregroundServiceType="dataSync|specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="snake_engine_inner" />
+        </service>
+        <service
+            android:name="com.snake.helper.ProxyVpnService"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action
+                    android:name="android.net.VpnService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.net.VpnService.SUPPORTS_ALWAYS_ON"
+                android:value="true" />
+        </service>
+        <activity
+            android:name="com.snake.helper.ProxyActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.snake.helper.InternalWebBrowser" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P0"
+            android:exported="true"
+            android:process=":p0"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P0_L"
+            android:exported="true"
+            android:process=":p0"
+            android:screenOrientation="landscape"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P1"
+            android:exported="true"
+            android:process=":p1"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P1_L"
+            android:exported="true"
+            android:process=":p1"
+            android:screenOrientation="landscape"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P2"
+            android:exported="true"
+            android:process=":p2"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P2_L"
+            android:exported="true"
+            android:process=":p2"
+            android:screenOrientation="landscape"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P3"
+            android:exported="true"
+            android:process=":p3"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@style/base_theme"
+            android:name="com.snake.helper.ProxyActivity$P3_L"
+            android:exported="true"
+            android:process=":p3"
+            android:screenOrientation="landscape"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.TransparentProxyActivity$P0"
+            android:exported="true"
+            android:process=":p0"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.TransparentProxyActivity$P1"
+            android:exported="true"
+            android:process=":p1"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.TransparentProxyActivity$P2"
+            android:exported="true"
+            android:process=":p2"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.TransparentProxyActivity$P3"
+            android:exported="true"
+            android:process=":p3"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.ProxyPendingActivity$P0"
+            android:exported="true"
+            android:process=":p0" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.ProxyPendingActivity$P1"
+            android:exported="true"
+            android:process=":p1" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.ProxyPendingActivity$P2"
+            android:exported="true"
+            android:process=":p2" />
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.snake.helper.ProxyPendingActivity$P3"
+            android:exported="true"
+            android:process=":p3" />
+        <service
+            android:name="com.snake.helper.ProxyService$P0"
+            android:exported="true"
+            android:process=":p0" />
+        <service
+            android:name="com.snake.helper.ProxyService$P1"
+            android:exported="true"
+            android:process=":p1" />
+        <service
+            android:name="com.snake.helper.ProxyService$P2"
+            android:exported="true"
+            android:process=":p2" />
+        <service
+            android:name="com.snake.helper.ProxyService$P3"
+            android:exported="true"
+            android:process=":p3" />
+        <provider
+            android:name="com.snake.helper.ProxyContentProvider$P0"
+            android:exported="true"
+            android:process=":p0"
+            android:authorities="com.snake.proxy_content_provider_0" />
+        <provider
+            android:name="com.snake.helper.ProxyContentProvider$P1"
+            android:exported="true"
+            android:process=":p1"
+            android:authorities="com.snake.proxy_content_provider_1" />
+        <provider
+            android:name="com.snake.helper.ProxyContentProvider$P2"
+            android:exported="true"
+            android:process=":p2"
+            android:authorities="com.snake.proxy_content_provider_2" />
+        <provider
+            android:name="com.snake.helper.ProxyContentProvider$P3"
+            android:exported="true"
+            android:process=":p3"
+            android:authorities="com.snake.proxy_content_provider_3" />
+        <service
+            android:name="com.snake.helper.ProxyJobService$P0"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"
+            android:process=":p0" />
+        <service
+            android:name="com.snake.helper.ProxyJobService$P1"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"
+            android:process=":p1" />
+        <service
+            android:name="com.snake.helper.ProxyJobService$P2"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"
+            android:process=":p2" />
+        <service
+            android:name="com.snake.helper.ProxyJobService$P3"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"
+            android:process=":p3" />
+        <property
+            android:name="android.adservices.AD_SERVICES_CONFIG"
+            android:resource="@xml/ga_ad_services_config" />
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="true"
+            android:exported="false" />
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false" />
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:exported="false"
+            android:authorities="com.snake.firebaseinitprovider"
+            android:initOrder="100"
+            android:directBootAware="true" />
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:exported="false"
+            android:authorities="com.snake.androidx-startup">
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
+        </provider>
+        <uses-library
+            android:name="android.ext.adservices"
+            android:required="false" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <service
+            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+            android:exported="false">
+            <meta-data
+                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+                android:value="cct" />
+        </service>
+        <service
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+        <receiver
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+            android:exported="false" />
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:permission="android.permission.DUMP"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="false">
+            <intent-filter>
+                <action
+                    android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="androidx.profileinstaller.action.SKIP_FILE" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
