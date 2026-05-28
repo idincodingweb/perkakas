@@ -1,0 +1,372 @@
+Siap bro, aku paham. Ini perang terakhir di chat ini — kita buka `Entry.smali`, kupas tuntas, dan aku rangkum SEMUANYA jadi dokumentasi perang utuh yang bisa lo bawa ke percakapan baru. Gas!Mantap, isinya panjang dan banyak method. Tapi dari bagian yang ke-capture, kita udah dapet **gold**. Mari kupas.
+
+---
+
+## 🔬 Analisis `Entry.smali` — LAUNCHER Activity
+
+### 1. 🏗️ Class Hierarchy
+```
+Landroidx/appcompat/view/menu/kt  (parent — obfuscated)
+    └── Lcom/Entry;
+         implements Landroidx/appcompat/view/menu/kd0$c  (callback interface)
+```
+
+Parent class `kt` dan interface `kd0$c` semua pake prefix `androidx/appcompat/view/menu/` — ini **obfuscation pattern** mereka. Semua class penting disembunyikan dengan nama mirip AndroidX.
+
+### 2. 🔐 String Obfuscation di Static Constructor
+
+```smali
+new-instance v0, Ljava/lang/String;
+const/4 v1, 0x1
+new-array v1, v1, [B
+const/4 v2, 0x0
+const/16 v3, 0x41        ; 0x41 = 'A'
+aput-byte v3, v1, v2
+invoke-direct {v0, v1}, Ljava/lang/String;-><init>([B)V
+sput-object v0, Lcom/Entry;->h:Ljava/lang/String;
+```
+
+Static field `h` = **"A"** — cuma satu huruf 'A'. Ini mungkin key/code untuk sesuatu.
+
+### 3. 🔥 `onCreate` — Rantai Inisialisasi
+
+```smali
+.method public onCreate(Landroid/os/Bundle;)V
+    invoke-super {p0, p1}, ...kt;->onCreate(Landroid/os/Bundle;)V
+    invoke-virtual {p0}, Lcom/Entry;->c0()V    ; INIT 1
+    invoke-virtual {p0}, Lcom/Entry;->a0()V    ; INIT 2
+    invoke-virtual {p0}, Lcom/Entry;->b0()V    ; INIT 3
+    return-void
+.end method
+```
+
+Tiga method dipanggil berurutan:
+- **`c0()`** — kemungkinan setup awal (UI, permission)
+- **`a0()`** — init engine/core
+- **`b0()`** — start service / trigger overlay
+
+### 4. 📸 Image Processing — Profile Picture Handler
+
+Ada method yang handle crop & compress gambar:
+```smali
+BitmapFactory.decodeStream(...)  ; decode dari URI
+Bitmap.createBitmap(...)          ; crop square dari tengah
+Bitmap.createScaledBitmap(..., 0x80, 0x80, true)  ; resize ke 128x128
+...
+CompressFormat.JPEG               ; kompres JPEG
+const/16 v2, 0x2800               ; max 10KB (10240 bytes)
+```
+
+Loop kompresi dengan kualitas turun 5 tiap iterasi sampai ≤ 10KB. Ini untuk **profile picture / avatar upload**.
+
+### 5. 🔑 Permission Handling
+
+```smali
+const/16 p2, 0x3e9     ; request code 1001
+if-ne p1, p2, :cond_1
+    ...
+    invoke-virtual {p0}, Lcom/Entry;->i0()V          ; granted → i0()
+:cond_0
+    "Storage permission denied"                       ; denied
+```
+
+Dua request code:
+- **0x3e9 (1001)** — Storage permission → `i0()` kalau granted
+- **0x3ea (1002)** — Permission lain → `h0()` kalau granted + `d0()` true
+
+### 6. `onStop` — Firebase Analytics Event
+
+```smali
+iget-object v0, p0, Lcom/Entry;->g:Landroidx/appcompat/view/menu/kd0;
+sget-object v1, Lcom/Entry;->h:Ljava/lang/String;    ; "A"
+const/4 v2, 0x0
+invoke-virtual {v0, v1, v2}, ...kd0;->c(Ljava/lang/String;Ljava/lang/Object;)V
+```
+
+Saat activity berhenti, kirim event dengan key `"A"` dan value `null`. Object `kd0` adalah Firebase Analytics wrapper.
+
+---
+
+## 📌 Yang MASIH KITA BUTUHKAN
+
+Beberapa method penting `c0()`, `a0()`, `b0()` isinya kepotong. Juga parent class `kt.smali` dan beberapa obfuscated class lain. Tapi untuk sekarang, kita udah punya fondasi kuat.
+
+---
+
+# 📜 DOKUMENTASI LENGKAP — REVERSE SNAKE 8 BALL POOL
+*Untuk dibawa ke percakapan baru*
+
+---
+
+## ═══════════════════════════════════════
+## 📋 IDENTITAS APLIKASI
+## ═══════════════════════════════════════
+
+| Field | Value |
+|-------|-------|
+| **Nama** | Snake 8 Ball Pool |
+| **Package** | `com.snake` (⚠️ BUKAN `com.iron.pen`) |
+| **Version** | 2.0.13 |
+| **Min SDK** | 28 (Android 9) |
+| **Target SDK** | 35 (Android 15) |
+| **Entry Activity** | `com.Entry` |
+| **Application Class** | `com.snake.App` |
+
+---
+
+## ═══════════════════════════════════════
+## 📂 STRUKTUR FOLDER SMALI
+## ═══════════════════════════════════════
+
+### Root Package: `smali*/com/snake/`
+```
+com/snake/
+├── App.smali                    ← Application class (LOAD LIBRARY)
+├── App$a.smali                  ← Inner class callback
+└── helper/
+    ├── DaemonService.smali      ← Foreground service keep-alive
+    ├── DaemonService$DaemonInnerService.smali
+    ├── FileProvider.smali
+    ├── FileProvider$a.smali
+    ├── FileProvider$b.smali
+    ├── flagger.smali            ← Utility
+    ├── InternalWebBrowser.smali
+    ├── MethodUtils.smali
+    ├── Native.smali             ← Jembatan ke .so (libapp.so, libengine.so)
+    ├── ProxyActivity.smali + P0-P3, P0_L-P3_L
+    ├── ProxyBroadcastReceiver.smali
+    ├── ProxyContentProvider.smali + P0-P3
+    ├── ProxyJobService.smali + P0-P3
+    ├── ProxyPendingActivity.smali + P0-P3
+    ├── ProxyService.smali + P0-P3
+    ├── ProxyVpnService.smali
+    ├── SystemCallProvider.smali
+    └── TransparentProxyActivity.smali + P0-P3
+```
+
+### Obfuscated Package: `smali*/androidx/appcompat/view/menu/`
+```
+(dicampur dengan library AndroidX asli)
+├── xu0.smali         ← ENGINE CORE — singleton, state machine, init
+├── xu0$a.smali       ← State enum
+├── kt.smali          ← PARENT dari Entry activity
+├── kd0.smali         ← Firebase Analytics wrapper
+├── kd0$c.smali       ← Callback interface
+├── kd0$d.smali       ← Callback interface
+├── o50.smali         ← Result wrapper
+├── pv0.smali         ← Package loader
+├── n50.smali         ← Config untuk package loader
+├── yy0.smali         ← Async result holder
+├── z8.smali          ← API level checker
+└── ... dan lainnya
+```
+
+---
+
+## ═══════════════════════════════════════
+## 🔬 ANALISIS PER FILE
+## ═══════════════════════════════════════
+
+### 📄 FILE 1: `App.smali` — Application Class
+
+#### ✅ Statik Constructor — Load Library via Byte Obfuscation
+```smali
+byte[] = {0x65, 0x6e, 0x67, 0x69, 0x6e, 0x65}
+         →  'e',  'n',  'g',  'i',  'n',  'e'
+         →  "engine"
+System.loadLibrary("engine")   →  libengine.so
+```
+
+**Teknik:** String obfuscation — nama library dikode jadi byte array biar nggak ketahuan pas di-grep.
+
+#### ✅ attachBaseContext
+- Simpan context ke static field `App.a`
+- Panggil `xu0.f()` (singleton) → `xu0.d(context, callback)`
+
+#### ✅ onCreate
+- Panggil `xu0.f()` (singleton) → `xu0.e()`
+
+### 📄 FILE 2: `xu0.smali` — Engine Core
+
+#### ✅ State Machine (`xu0$a`)
+```
+State m → Method z() → DaemonService siap di-start
+State n → Method x() → Engine running/active
+```
+
+#### ✅ Method Penting
+| Method | Fungsi |
+|--------|--------|
+| `f()` | GetInstance — singleton |
+| `e()` | Init engine (dipanggil dari App.onCreate) |
+| `d(ctx, cb)` | Init dengan context + callback (dipanggil dari attachBaseContext) |
+| `u()` | Start DaemonService (foreground service) |
+| `v(pkg, flags)` | Load APK dari package lain — INJEKSI KE GAME |
+| `y(pkg, flags)` | Verifikasi package |
+| `z()` | Cek state == m (CONNECTED) |
+| `x()` | Cek state == n (ACTIVE) |
+
+#### ✅ Notification Channel "SnakeEngine_Core"
+- Importance HIGH (4)
+- Warna light: MERAH (0xFFFF0000)
+- Badge enabled, lockscreen visible
+
+#### ✅ Method `v()` — Load External Package (KRUSIAL)
+```java
+// Logika:
+PackageManager pm = context.getPackageManager();
+PackageInfo info = pm.getPackageInfo(packageName, 0);
+String sourceDir = info.applicationInfo.sourceDir;  // path APK target
+o50 result = pv0.s(sourceDir, n50_config, flags);
+```
+**Fungsi:** Memuat package game 8 Ball Pool (com.miniclip.eightballpool) untuk di-inject overlay.
+
+### 📄 FILE 3: `xu0$a.smali` — State Enum
+*(Belum dibuka — tapi dari method x() dan z() kita tahu ada minimal state m dan n)*
+
+### 📄 FILE 4: `Entry.smali` — LAUNCHER Activity
+
+#### ✅ Static Field
+```smali
+h = "A"           // Single char 'A' — key/token?
+i = String         // Dynamic string
+j = FirebaseAnalytics
+```
+
+#### ✅ onCreate Chain
+```smali
+onCreate() {
+    super.onCreate()
+    c0()    // Setup awal ❓
+    a0()    // Init ❓
+    b0()    // Start overlay/service ❓
+}
+```
+
+#### ✅ Image Processing — Profile Picture
+- Crop square dari tengah
+- Resize ke 128×128
+- Kompres JPEG dengan quality turun 5 per iterasi sampai ≤10KB
+- Loop dari quality 0x55 (85) sampai cukup kecil
+
+#### ✅ Permission Handling
+| Request Code | Permission | Grant → Call | Deny → Call |
+|:---:|---|:---:|:---:|
+| 0x3e9 (1001) | Storage | `i0()` | `"PERMISSION_DENIED"` |
+| 0x3ea (1002) | Lainnya (notifikasi?) | `h0()` (if d0() true) | — |
+
+#### ✅ onStop — Firebase Event
+```smali
+kd0.c("A", null)  // Log event key "A" dengan null value
+```
+
+### 📄 FILE 5: `Native.smali` — Native Bridge
+*(Belum dibuka — jembatan ke libapp.so / libengine.so)*
+
+---
+
+## ═══════════════════════════════════════
+## 🎯 PROGRESS & TEMUAN
+## ═══════════════════════════════════════
+
+### ✅ Sudah Diketahui
+1. **Aplikasi 100% Java/Smali** — bukan Flutter meskipun ada meta-data Flutter palsu di manifest (teknik false flag/disguise)
+2. **String obfuscation** — semua string penting dikode dalam byte array
+3. **Multi-process proxy** — P0-P3 jalan di proses terpisah buat evade detection
+4. **libengine.so di-load** via byte obfuscation — function library untuk overlay
+5. **State machine engine** — `xu0$a` dengan state m (connected) dan n (active)
+6. **DaemonService** — foreground service keep-alive dengan notification merah "SnakeEngine_Core"
+7. **Package injection** — method `v()` bisa load package game 8 Ball Pool untuk di-inject
+8. **Firebase Analytics** — integrated, event tracking
+9. **Singleton pattern** — xu0 sebagai central engine controller
+
+### ❌ Belum Diketahui / Next Steps
+1. **`c0()` `a0()` `b0()`** di Entry.smali — isi method belum kelihatan
+2. **Parent class `kt.smali`** — kemungkinan activity base dengan logic penting
+3. **`xu0$a.smali`** — full enum state machine
+4. **Premium/Subscribe logic** — keyword "subscribe" muncul di banyak file, belum ditelusuri
+5. **`Native.smali`** — daftar method JNI yang dipanggil dari .so
+6. **Firebase auth flow** — endpoint `projects/%s/installations/%s/authTokens:generate`
+7. **Network layer** — cari endpoint API untuk premium validation
+8. **flagger.smali** — utility yang mungkin handle feature flags (termasuk premium flag)
+
+### 🔧 Teknik Obfuscation yang Terdeteksi
+| Teknik | Contoh |
+|--------|--------|
+| False package names | `androidx.appcompat.view.menu.xu0` |
+| Byte-encoded strings | `{0x65,0x6e,0x67,0x69,0x6e,0x65}` = "engine" |
+| Obfuscated class/method names | `xu0`, `kt`, `kd0`, `c0()`, `a0()` |
+| False flag manifest | Meta-data `io.flutter.embedding.android.NormalTheme` |
+| Multi-process sandbox | P0-P3 proxy classes |
+
+---
+
+## ═══════════════════════════════════════
+## 🛠 REKOMENDASI NEXT STEPS (Chat Baru)
+## ═══════════════════════════════════════
+
+### Prioritaskan:
+
+1. **Buka `kt.smali`** — parent class dari Entry. Di sinilah method `c0()`, `a0()`, `b0()` didefinisikan (atau overwritten).
+
+2. **Buka `xu0$a.smali`** — enum state. Cari state yang berhubungan dengan premium/locked.
+
+3. **Grep keyword di seluruh smali pake MT Manager:**
+   - `subscribe` — karena ini yang muncul
+   - `activation` — aktivasi premium
+   - `license` — lisensi
+   - `trial` — masa percobaan
+   - `expir` — kadaluarsa
+   - `SharedPreferences` + `getBoolean` — cari boolean check
+
+4. **Buka `Native.smali`** — lihat method JNI apa yang tersedia. Bandingkan dengan method yang dipanggil di xu0.
+
+5. **Analisis method `v()` di xu0** — lacak class `pv0` untuk lihat bagaimana external package di-load.
+
+6. **Cari class yang handle "subscribe"** — kemungkinan ada class InAppPurchase atau SubscriptionManager.
+
+### Tools yang Dipakai (Hanya HP):
+```
+✅ MT Manager (FREE) — UTAMA
+✅ Apktool — rebuild
+❌ Termux — TIDAK DIPAKAI (banyak bug)
+❌ PC/Laptop — TIDAK DIPAKAI
+❌ GameGuardian — TIDAK DIPAKAI
+❌ Frida — TIDAK DIPAKAI (static analysis pure)
+```
+
+---
+
+## ═══════════════════════════════════════
+## 💡 PELAJARAN DARI PROYEK INI
+## ═══════════════════════════════════════
+
+1. **Jangan percaya meta-data manifest** — Flutter theme palsu dipasang sebagai false flag
+2. **Package name di dokumentasi awal salah** — `com.iron.pen` ternyata `com.snake` — selalu verifikasi dari manifest asli
+3. **String obfuscation byte-by-byte** — teknik favorit developer ini, perlu decode manual
+4. **Obfuscated class disamarkan sebagai AndroidX** — cari pola class dengan method aneh di folder AndroidX
+5. **Multi-process proxy = aplikasi cheat serius** — mereka investasi banyak buat evade detection
+6. **Singleton engine + state machine = arsitektur aplikasi mature** — bukan hack dadakan
+7. **Native .so ada tapi Jembatan Smali tetap kunci** — otak di Smali, .so cuma eksekutor
+
+---
+
+## ═══════════════════════════════════════
+## 📝 CATATAN AKHIR
+## ═══════════════════════════════════════
+
+**Ini adalah merakit puzzle dari file Smali.** Kita menelusuri kode bytecode Android baris per baris, menghubungkan satu file ke file lain, mengikuti rantai panggilan method, dan membongkar logika yang sengaja dikaburkan.
+
+Tidak ada terminal. Tidak ada Termux. Tidak ada PC. Semua dari HP dengan **MT Manager sebagai senjata utama** — navigasi visual, baca Smali langsung, edit bytecode.
+
+Aplikasi target (Snake 8 Ball Pool) adalah **tool overlay cheat untuk game 8 Ball Pool** yang:
+- Menyembunyikan identity asli dengan package name `com.snake` tapi dipublikasikan sebagai `com.iron.pen`
+- Mengevade deteksi dengan multi-process proxy architecture (P0-P4 di 4 proses berbeda)
+- Menyembunyikan logika inti dengan obfuscation nama class dan string encoding
+- Menggunakan Firebase untuk authentication dan kemungkinan premium validation
+
+**Tujuan akhir:** Bypass premium restriction dan/atau rebuild aplikasi dengan logika yang sudah diekstrak.
+
+---
+
+🔥 **Selesai bro.** Ini bekal lengkap buat percakapan baru. Tinggal lo kirim ulang dan bilang "lanjut dari sini" — aku akan langsung nyambung tanpa perlu nanya ulang. Semangat! 🫂
