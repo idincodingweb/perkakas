@@ -38,3 +38,461 @@ classes.dex
 setPasswordVisibilityToggleTintMode
 classes.dex
 show_password
+
+
+
+classes.dex
+http://schemas.android.com/apk/res-auto
+classes.dex
+http://schemas.android.com/apk/res/android
+
+
+classes.dex
+token
+classes.dex
+tokenCreationEpochInSecs
+classes.dex
+tokenCreationTimestamp
+classes.dex
+tokenExpirationTimestamp
+classes.dex
+, authToken=
+classes.dex
+, authTokenType
+classes.dex
+, getAuthToken,
+classes.dex
+, getAuthTokenLabel,
+classes.dex
+, mToken=
+classes.dex
+, refreshToken=
+classes.dex
+, tokenCreationEpochInSecs=
+classes.dex
+, tokenCreationTimestamp=
+classes.dex
+, tokenExpirationTimestamp=
+classes.dex
+. Will retry token retrieval
+classes.dex
+ALTER TABLE apps ADD COLUMN session_stitching_token TEXT;
+classes.dex
+ALTER TABLE apps ADD COLUMN session_stitching_token_hash INTEGER;
+classes.dex
+AccountAuthenticator_customTokens
+classes.dex
+AuthToken
+classes.dex
+AuthTokenType cannot be null
+classes.dex
+Failed to encode token:
+classes.dex
+Failed to parse token:
+classes.dex
+Installation ID could not be validated with the Firebase servers (maybe it was deleted). Firebase Installations will need to create a new Installation ID and auth token. Please retry your last request.
+classes.dex
+InstallationTokenResult{token=
+classes.dex
+Invoking onNewToken for app:
+classes.dex
+Landroid/util/JsonToken;
+classes.dex
+Lorg/json/JSONTokener;
+classes.dex
+Null token
+classes.dex
+RESUME_TOKEN
+classes.dex
+RefreshToken
+classes.dex
+Resetting session stitching token to %s
+classes.dex
+TRANSACTION_getAuthToken
+classes.dex
+TRANSACTION_getAuthTokenLabel
+classes.dex
+Token retrieval failed:
+classes.dex
+TokenCreationEpochInSecs
+classes.dex
+TokenResult{token=
+classes.dex
+Topic sync or token retrieval failed on hard failure exceptions:
+classes.dex
+_S_|_activity_token_v_
+classes.dex
+_S_|_token_
+classes.dex
+authToken
+classes.dex
+authTokenLabelKey
+classes.dex
+authTokenType cannot be null
+classes.dex
+authTokenType is null
+classes.dex
+authtoken
+classes.dex
+com.google.android.gms.signin.internal.forceCodeForRefreshToken
+classes.dex
+com.google.android.gms.signin.internal.idTokenRequested
+classes.dex
+com.google.android.gms.signin.internal.waitForAccessTokenRefresh
+classes.dex
+com.google.firebase.messaging.NEW_TOKEN
+classes.dex
+com.google.iid.TOKEN_REQUEST
+classes.dex
+customTokens
+classes.dex
+getApplicationWindowToken
+classes.dex
+getAuthToken
+classes.dex
+getAuthTokenLabel
+classes.dex
+getWindowToken
+classes.dex
+invalidateAuthToken
+classes.dex
+mActivityToken
+classes.dex
+mToken
+classes.dex
+measurement.collection.enable_session_stitching_token.client.dev
+classes.dex
+measurement.collection.enable_session_stitching_token.first_open_fix
+classes.dex
+measurement.session_stitching_token_enabled
+classes.dex
+peekAuthToken
+classes.dex
+projects/%s/installations/%s/authTokens:generate
+classes.dex
+refreshToken
+classes.dex
+session_stitching_token
+classes.dex
+session_stitching_token_hash
+classes.dex
+setAuthToken
+classes.dex
+stopServiceToken
+classes.dex
+token
+classes.dex
+tokenId
+classes.dex
+windowToken
+classes.dex
+writeInterfaceToken
+
+
+classes.dex
+, loginOptions
+classes.dex
+Landroid/content/DialogInterface$OnCancelListener;
+classes.dex
+Landroid/content/DialogInterface$OnClickListener;
+classes.dex
+Landroid/content/DialogInterface$OnDismissListener;
+classes.dex
+Landroid/content/DialogInterface;
+classes.dex
+Please login first before authorization
+classes.dex
+com.facebook.login.WebViewLoginMethodHandler
+classes.dex
+com.google.android.gsf.login
+classes.dex
+fb_login_method
+classes.dex
+https://www.facebook.com/login.php
+classes.dex
+loginClient
+classes.dex
+loginDialog
+
+
+AUTHH :
+
+classes.dex
+is an unsupported authority. Only com.google.android.gms.phenotype authority is supported.
+classes.dex
+, authToken=
+classes.dex
+, authTokenType
+classes.dex
+, getAuthToken,
+classes.dex
+, getAuthTokenLabel,
+classes.dex
+, notifyOnAuthFailure
+classes.dex
+--disable-service-auth-codes
+classes.dex
+AT_TRACKING_MANAGER_AUTHORIZATION_STATUS_AUTHORIZED
+classes.dex
+AT_TRACKING_MANAGER_AUTHORIZATION_STATUS_DENIED
+classes.dex
+AT_TRACKING_MANAGER_AUTHORIZATION_STATUS_NOT_CONFIGURED
+classes.dex
+AT_TRACKING_MANAGER_AUTHORIZATION_STATUS_NOT_DETERMINED
+classes.dex
+AT_TRACKING_MANAGER_AUTHORIZATION_STATUS_RESTRICTED
+classes.dex
+AT_TRACKING_MANAGER_AUTHORIZATION_STATUS_UNKNOWN
+classes.dex
+AUTH_ERROR
+classes.dex
+AccountAuthenticator
+classes.dex
+AccountAuthenticator_accountPreferences
+classes.dex
+AccountAuthenticator_accountType
+classes.dex
+AccountAuthenticator_customTokens
+classes.dex
+AccountAuthenticator_icon
+classes.dex
+AccountAuthenticator_label
+classes.dex
+AccountAuthenticator_smallIcon
+classes.dex
+AuthToken
+classes.dex
+AuthTokenType cannot be null
+classes.dex
+Authorization
+classes.dex
+Authorize Game
+classes.dex
+Couldn't find meta-data for provider with authority
+classes.dex
+FontRequest {mProviderAuthority:
+classes.dex
+Goog-Firebase-Installations-Auth
+classes.dex
+Incorrect provider authority in manifest. Most likely due to a missing applicationId variable in application's build.gradle.
+classes.dex
+Installation ID could not be validated with the Firebase servers (maybe it was deleted). Firebase Installations will need to create a new Installation ID and auth token. Please retry your last request.
+classes.dex
+Landroid/accounts/AuthenticatorDescription;
+classes.dex
+Landroid/accounts/AuthenticatorException;
+classes.dex
+Landroid/accounts/IAccountAuthenticator$Default;
+classes.dex
+Landroid/accounts/IAccountAuthenticator$Stub$Proxy;
+classes.dex
+Landroid/accounts/IAccountAuthenticator$Stub;
+classes.dex
+Landroid/accounts/IAccountAuthenticator$_Parcel;
+classes.dex
+Landroid/accounts/IAccountAuthenticator;
+classes.dex
+Landroid/accounts/IAccountAuthenticatorResponse$Default;
+classes.dex
+Landroid/accounts/IAccountAuthenticatorResponse$Stub$Proxy;
+classes.dex
+Landroid/accounts/IAccountAuthenticatorResponse$Stub;
+classes.dex
+Landroid/accounts/IAccountAuthenticatorResponse$_Parcel;
+classes.dex
+Landroid/accounts/IAccountAuthenticatorResponse;
+classes.dex
+Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+classes.dex
+Ljavax/security/auth/x500/X500Principal;
+classes.dex
+No package found for authority:
+classes.dex
+Please login first before authorization
+classes.dex
+Please set a valid API key. A Firebase API key is required to communicate with Firebase server APIs: It authenticates your project with Google.Please refer to https://firebase.google.com/support/privacy/init-options.
+classes.dex
+TRANSACTION_getAuthToken
+classes.dex
+TRANSACTION_getAuthTokenLabel
+classes.dex
+[Landroid/accounts/AuthenticatorDescription;
+classes.dex
+[Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+classes.dex
+account-authenticator
+classes.dex
+accountAuthenticated
+classes.dex
+android.accounts.AccountAuthenticator
+classes.dex
+authAccount
+classes.dex
+authToken
+classes.dex
+authTokenLabelKey
+classes.dex
+authTokenType cannot be null
+classes.dex
+authTokenType is null
+classes.dex
+authVersion
+classes.dex
+authenticate
+classes.dex
+authority
+classes.dex
+authtoken
+classes.dex
+cancelAuthentication
+classes.dex
+checkAccount: aborting session since we are no longer connected to the authenticator,
+classes.dex
+com.google.android.gms.signin.internal.usePromptModeForAuthCode
+classes.dex
+disable-service-auth-codes
+classes.dex
+encodedAuthority
+classes.dex
+getAuthToken
+classes.dex
+getAuthTokenLabel
+classes.dex
+getAuthenticatorId
+classes.dex
+getAuthenticatorTypes
+classes.dex
+getAuthority
+classes.dex
+invalidateAuthToken
+classes.dex
+lastAuthenticatedTime
+classes.dex
+mAuthority is null. Did you override attachInfo and did not call super.attachInfo()?
+classes.dex
+measurement.config.url_authority
+classes.dex
+measurement.rb.attribution.uri_authority
+classes.dex
+notifyOnAuthFailure
+classes.dex
+peekAuthToken
+classes.dex
+projects/%s/installations/%s/authTokens:generate
+classes.dex
+serverAuthCode
+classes.dex
+setAuthToken
+classes.dex
+setAuthenticationRequired
+classes.dex
+setVpnPackageAuthorization
+classes.dex
+there is no authenticator for
+classes.dex
+x-goog-fis-android-iid-migration-auth
+
+
+
+classes.dex
+google_api_key
+classes.dex
+hasPermanentMenuKey
+classes.dex
+inKeyguardRestrictedInputMode
+classes.dex
+indexOfKey
+classes.dex
+isKeyboardNavigationCluster
+classes.dex
+isShortcutKey
+classes.dex
+kKeyboard
+classes.dex
+key
+classes.dex
+key == null
+classes.dex
+key == null || value == null
+classes.dex
+key cannot be null
+classes.dex
+key is null
+classes.dex
+keyAt
+classes.dex
+keyCode
+classes.dex
+keySet
+classes.dex
+keyboard
+classes.dex
+keyboardNavigationClusterSearch
+classes.dex
+keydown
+classes.dex
+keyguard
+classes.dex
+keymap
+classes.dex
+keyup
+classes.dex
+lastKey
+classes.dex
+mGroupKey
+classes.dex
+mKeySetMapping
+classes.dex
+mSigningKeys
+classes.dex
+mUpgradeKeySets
+classes.dex
+null key in entry: null=
+classes.dex
+onKey
+classes.dex
+onKeyDown
+classes.dex
+onKeyOther
+classes.dex
+onKeyPreIme
+classes.dex
+onKeyUp
+classes.dex
+onUnhandledKeyEvent
+classes.dex
+release-keys
+classes.dex
+removeOnUnhandledKeyEventListener
+classes.dex
+samsung/hawkxx/hawk:5.0/LRX21T/HAWKXXU0AOB1:user/release-keys
+classes.dex
+sendKeyDownUpSync
+classes.dex
+sendKeyEvent
+classes.dex
+sendKeySync
+classes.dex
+serviceActionBundleKey
+classes.dex
+serviceResponseIntentKey
+classes.dex
+setForeignKeyConstraintsEnabled
+classes.dex
+setKeyListener
+classes.dex
+setKeyboardNavigationCluster
+classes.dex
+setOnKeyListener
+classes.dex
+setSortKey
+classes.dex
+sharedElementNameMapping.keys
+classes.dex
+shouldShowMenuShortcutsWhenKeyboardPresent
+classes.dex
+test-keys
+classes.dex
+with(entries.iterator().…ingletonMap(key, value) }
+classes.dex
+x-goog-api-key
