@@ -1,0 +1,380 @@
+
+
+# 📋 DOKUMENTASI LENGKAP — PERCAKAPAN HACKER AI SESI 2 (UPDATE)
+## 8 Ball Pool Mod — Bypass Login & Expired
+
+---
+
+### 📌 INFORMASI APLIKASI
+
+| Item | Detail |
+|------|--------|
+| **Game** | 8 Ball Pool |
+| **Package** | `com.miniclip.eightballpool` |
+| **Entry Point** | `com.miniclip.eightballpool.EightBallPoolActivity` |
+| **Lokasi Smali** | `smali_classes3/com/miniclip/eightballpool/` |
+| **Fitur Mod** | Autoplay, Auto Aim, Auto Queue, Predict, Draw Lines, 3D Lines, Box Lines |
+| **Masalah** | Login screen (username/password) + expired/trial check sebelum masuk |
+
+---
+
+### 🛠 TOOLS & METODOLOGI
+
+**Tools yang digunakan:**
+- **MT Manager** (free version) — eksplorasi file smali manual (puzzle method)
+- **GitHub** (`github.com/idincodingweb/perkakas`) — upload file smali untuk dianalisis via HackerAI
+- **HackerAI (web browsing)** — analisis kode smali dari file yang diupload
+
+**Metodologi:**
+- **Puzzle Method** — buka file per file di MT Manager, upload file relevan ke GitHub, HackerAI analisis
+- ❌ Tidak pakai Termux (buggy, output kepotong)
+- ❌ Tidak pakai grep global (terlalu banyak noise library iklan)
+
+---
+
+### 📂 STRUKTUR FOLDER HASIL DECOMPILE APK
+
+```
+root decompile/
+├── AndroidManifest.xml
+├── smali/                          ← library Android standar
+├── smali_classes2/                 ← ???
+├── smali_classes3/                 ← KODE GAME ASLI + MOD
+│   └── com/miniclip/eightballpool/
+│       ├── EightBallPoolActivity.smali         ← ENTRY POINT
+│       ├── EightBallPoolActivity$1.smali       ← ANR WatchDog
+│       ├── EightBallPoolActivity$2.smali       ← Custom View (onDraw loop)
+│       └── EightBallPoolBaseActivity.smali     ← PARENT CLASS
+├── smali_classes4/ - smali_classes15/          ← library iklan & SDK
+├── smali_classes12/
+│   └── loQPY7/                     ← 🔥 MOD CODE (obfuscated)
+│       ├── ldv373/                 ← lifecycle, SharedPreferences NATIVE, toast
+│       ├── pAouN2/                 ← touch handler, overlay
+│       ├── eNneC6/                 ← native library loader
+│       ├── ajSoJ9/                 ← string decryption engine
+│       ├── tEOi55/                 ← SharedPreferences bridge
+│       └── (file-file root lain)
+└── lib/
+    ├── libloader.so       (6.04 MB)  ← OpenSSL + Capstone (BUKAN login)
+    ├── libprotect.so      (1.08 MB)  ← Anti-cheat + registerToken
+    ├── libjarellgod.so    (3.53 MB)  ← MOD MENU (getExpTime, overlay, touch, draw)
+    └── lainnya
+```
+
+---
+
+### 📂 FILE-FILE YANG SUDAH DIANALISIS
+
+#### A. EightBallPoolActivity.smali (Entry Point)
+**Path:** `smali_classes3/com/miniclip/eightballpool/EightBallPoolActivity.smali`
+
+- `extends EightBallPoolBaseActivity` — parent class
+- `onCreate` — cuma setup ANR WatchDog + EventsReceiver. **TIDAK ada login**
+- `onDestroy` → panggil `LloQPY7/ldv373/jjNX20;->nIlmc7`
+- `onPause` → panggil `LloQPY7/ldv373/jjNX20;->jrSNH9`
+- `onResume` → panggil `LloQPY7/ldv373/jjNX20;->dRjDy4`
+- `onTouchEvent` → panggil `LloQPY7/pAouN2/slpwS7;->ewBTA8`
+
+#### B. EightBallPoolBaseActivity.smali (Parent Class)
+**Path:** `smali_classes3/com/miniclip/eightballpool/EightBallPoolBaseActivity.smali`
+
+- `extends Lcom/miniclip/nativeJNI/cocojava` — parent adalah native JNI bridge
+- `implements MCViewManager$MCViewManagerEventsListener`
+- Method `init()` — baca SharedPreferences untuk cek versi app, lalu `loadExternalModules()`
+- Method `getAPKSigningSignature()` — anti-tamper signature check
+- `onShowDefaultView()` — splash screen (`intro_background` drawable)
+- **TIDAK ADA login** di class ini. Login tidak ditrigger dari sini.
+
+#### C. loQPY7/ldv373/jjNX20.smali (Lifecycle + Toast Manager)
+**Path:** `8ball data/new1/jjNX20.smali`
+
+- `sCurrentActivity` — referensi activity aktif
+- `isFirstOnResumeOfActivity`, `isExitingAfterToast`
+- `toastStack` — stack maks 20 toast
+- Method: `jt2771()` (exit app), `openUrl()` (buka URL), `showToast()`, `zHPgl2()` (exit setelah toast)
+- Method `skrMz2()` dan `vQk5T9()` — kosong (stub)
+- **String terenkripsi:** `"93oT"` dll — didecrypt via jLKPr9
+
+#### D. loQPY7/pAouN2/slpwS7.smali (Touch Handler)
+**Path:** `8ball data/new1/slpwS7.smali`
+
+- Queue & distribute motion events ke callback
+- Interface `wJFUd0` — callback handler
+- **BUKAN login handler**
+
+#### E. loQPY7/eNneC6/wMLhN2.smali (Native Library Loader)
+**Path:** `8ball data/data4/wMLhN2.smali`
+
+- Method `gWm7c0()` — load library dari path
+- Method `szn0D8()` → `yVBc83/wMLhN2;->loadLibrary` (load .so)
+- Method `preLoad()`, `tmFDc1()`, `wdvOA0()`, `nCrTg8()` — semua delegate ke `ouc9R2`
+
+#### F. loQPY7/ajSoJ9/jLKPr9.smali (String Decryption Engine)
+**Path:** `8ball data/data4/jLKPr9.smali`
+
+- **Semua string diencrypt.** Public method: `hY1Z05("93XX")` → return string asli
+- Static constructor panggil `oQLNW6.obOiP7()` untuk inisialisasi
+- Method `ak5VH9()` — decryption algorithm
+- Method `veaIu4()` — inisialisasi mapping karakter dari SharedPreferences (via `ouc9R2.uGifl7()`)
+- Map `APJKoR` (Character→Integer), fields: `AqcqTH`, `UOAJmm`, `WOaMuD`, `jrGBMb`
+
+#### G. loQPY7/tEOi55/tEOi55.smali (SharedPreferences Bridge — KE NATIVE)
+**Path:** `8ball data/data4/tEOi55.smali`
+
+**INI FILE KRUSIAL — SEMUA METHOD DELEGATE KE NATIVE:**
+- `getInt()` → `ouc9R2.g2XOj8` (native)
+- `getString()` → `ouc9R2.nKcwf3` (native)
+- `getStringArray()` → `ouc9R2.jjq1P6` (native)
+- `oU1Aa9()` → `ouc9R2.ahc3G4` (native) — boolean getter
+- `svlAj2()` → `ouc9R2.qjMHi7` (native) — byte array getter
+- `xSDXI7()` → getString lalu convert ke bytes
+
+#### H. loQPY7/ldv373/ouc9R2.smali (SharedPreferences NATIVE — KUNCI LOGIN)
+**Path:** `8ball data/data4/newlagi/ouc9R2.smali`
+
+**TEROBOSAN — SEMUA METHOD ADALAH NATIVE:**
+```smali
+.method public static native ahc3G4(Ljava/lang/String;Z)Z       ← get boolean
+.method public static native g2XOj8(Ljava/lang/String;I)I       ← get int
+.method public static native nKcwf3(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; ← get string
+.method public static native jjq1P6(Ljava/lang/String;)[Ljava/lang/String;  ← get string array
+.method public static native uGifl7()Ljava/lang/String;         ← get mapping character
+.method public static native mjlHb5(Ljava/lang/String;Ljava/lang/String;)Z  ← compare string
+.method public static native mjuo85(Ljava/lang/String;)Z        ← check exists?
+.method public static native qjMHi7(Ljava/lang/String;)[B       ← get bytes
+.method public static native setApplication(Ljava/lang/Object;)V  ← set context
+.method public static native setDeviceId(Ljava/lang/String;)V   ← set device ID
+.method public static native qqdZS6(Ljava/lang/String;)Z        ← check key exists
+.method public static native dWNHx1(Ljava/lang/String;)Ljava/lang/String; ← get encrypted?
+```
+**Static constructor:**
+```smali
+invoke-static {}, Lqwerty/asdfgh/zxcvbn;->lkjhgf()V
+```
+→ Panggil native registration ke `qwerty/asdfgh/zxcvbn` class.
+
+#### I. loQPY7/ldv373/oQLNW6.smali (Inisialisasi Native Library)
+**Path:** `8ball data/data4/newlagi/oQLNW6.smali`
+
+- Method `obOiP7()` — entry point inisialisasi, hanya jalan di main thread
+- Method `xT9Oe5()` — **load `libloader.so`**:
+  ```smali
+  const-string v0, "rary"
+  invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V  ← coba load "rary"
+  invoke-static {}, tgqxV6() → return "loader"
+  invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V  ← load "loader"
+  ```
+- Method `getAppInfo()` — reflection ke `ActivityThread` untuk dapet `ApplicationInfo`
+- Method `getFieldValue()` — reflection get field
+- Method `nIY0I8()` → dapet `dataDir`
+- Method `nbsX67()` → dapet parent path
+
+#### J. qwerty/asdfgh/zxcvbn.smali (JNI Native Registration)
+**Path:** `8ball data/data4/newlagi/zxcvbn.smali`
+
+```smali
+.class public Lqwerty/asdfgh/zxcvbn;
+.method public static native lkjhgf()V   ← register semua native method ouc9R2
+```
+Class sangat kecil. Hanya bridge untuk register native methods ke `libloader.so`.
+
+#### K. File-file Utility Lain
+
+| File | Fungsi |
+|------|--------|
+| `bX8HL3.smali` | Logger (d, e, w, v, wtf) |
+| `vlsWn4.smali` | Reflection utils (getField, getMethod, setField) |
+| `sEAvJ5.smali` | URL utility (extract host, isNullOrEmpty) |
+| `znLYb2.smali` | Network detection (IPv4/IPv6) |
+| `ecvMb0.smali` | Class kosong (placeholder?) |
+| `w6pc60.smali` | Context getter (belum dianalisis detail) |
+
+---
+
+### 🔴 FILE YANG BELUM DITEMUKAN / PERLU DICARI
+
+| File | Path | Prioritas | Keterangan |
+|------|------|-----------|------------|
+| `yVBc83/wMLhN2.smali` | `loQPY7/yVBc83/` | 🔴 TINGGI | Loader native (loadLibrary + vXgWa0) |
+| `lPs483.smali` | `loQPY7/` | 🟡 SEDANG | Collection utilities (dipanggil jLKPr9) |
+| `lPs483$ezPyC9.smali` | `loQPY7/` | 🟡 SEDANG | Map utilities |
+| `lPs483$tCwI25.smali` | `loQPY7/` | 🟡 SEDANG | String/array utilities |
+| `qmBcF8/tC9SU7.smali` | `loQPY7/qmBcF8/` | 🟡 SEDANG | String unescape |
+| `h9atL3.smali` | `loQPY7/vt9T13/` | 🟡 SEDANG | Toast creator (dipanggil jjNX20) |
+| `mGhVK5.smali` | `loQPY7/` | 🟢 RENDAH | 404 |
+| `YBa164.smali` | `loQPY7/` | 🟢 RENDAH | Belum dibaca |
+
+---
+
+### 🔍 FILE BERDASARKAN KEYWORD SEARCH
+
+| Keyword | Hasil |
+|---------|-------|
+| `EditText` | ✅ Hanya MCKeyboard.smali (class resmi Miniclip — false positive) |
+| `Button` | ❌ Tidak ditemukan di loQPY7 |
+| `OnClickListener` | ❌ Tidak ditemukan di loQPY7 |
+| `inputType` | ❌ Tidak ditemukan |
+| `Hint` | ❌ Tidak ditemukan |
+| `WebView` | ❌ Tidak ditemukan (perlu dicek ulang) |
+| `loadUrl` | ❌ Tidak ditemukan |
+| `http://` / `https://` | ❌ Tidak ditemukan URL kustom modder |
+| `ahc3G4` | ✅ Hanya di ouc9R2 (native) dan tEOi55 (bridge) |
+| `oU1Aa9` | ✅ Hanya di tEOi55 (bridge) dan jjNX20 (caller) |
+| `getExpTime` | ❌ Belum dicari (perlu search global) |
+| `Toast` | ❌ Belum dicari |
+| `qwerty` | ✅ zxcvbn.smali ditemukan |
+
+---
+
+### 🔥 TEMUAN PALING KRUSIAL
+
+1. **Semua SharedPreferences di loQPY7 adalah NATIVE** — method di `ouc9R2` semuanya `native`. Tidak ada SharedPreferences Java.
+2. **Native library yang digunakan adalah `libloader.so`** (6.04 MB) — di-load oleh `oQLNW6.xT9Oe5()`
+3. **String decryption** via `jLKPr9.hY1Z05()` — mapping karakter diambil dari `ouc9R2.uGifl7()` (native juga)
+4. **Login form tidak ditemukan di Java** — tidak ada EditText, Button, WebView, atau HTTP request di loQPY7
+5. **Login KEMUNGKINAN BESAR ada di NATIVE (.so)** — baik validasi username/password langsung di native, atau login form dibuat secara native (via OpenGL/SurfaceView dari `libjarellgod.so`)
+
+---
+
+### 📊 STRUKTUR NATIVE
+
+```
+oQLNW6.obOiP7()
+  → xT9Oe5()
+     → System.loadLibrary("loader")   → libloader.so
+        → static init ouc9R2
+           → zxcvbn.lkjhgf() (native)
+              → Register semua JNI method ouc9R2 di libloader.so
+
+tEOi55.getString() → ouc9R2.nKcwf3() → [libloader.so native]
+tEOi55.oU1Aa9()    → ouc9R2.ahc3G4() → [libloader.so native]
+jLKPr9.hY1Z05()    → decryption via mapping dari uGifl7() [libloader.so native]
+```
+
+---
+
+### 📎 LINK FILE DI GITHUB
+
+#### Dokumentasi
+| File | URL |
+|------|-----|
+| **Dokumentasi sesi 1** | https://github.com/idincodingweb/perkakas/raw/refs/heads/main/8ball%20data/percakapanhackerai/Dokumentasiterakhirdikerjakan.txt |
+| **Percakapan sesi 1** | https://raw.githubusercontent.com/idincodingweb/perkakas/refs/heads/main/8ball%20data/percakapanhackerai/percakapan1.txt |
+
+#### Screenshot
+| Gambar | URL |
+|--------|-----|
+| Screenshot aplikasi | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/screnshoot |
+| Screenshot MT Manager | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/new1 |
+| Screenshot search results | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/data4/screenshot |
+| Screenshot http/https | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/data4/berdasarkan%20http%20dan%20https |
+| Screenshot newlagi | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/data4/newlagi |
+
+#### File Smali
+| File | URL |
+|------|-----|
+| **EightBallPoolActivity.smali** | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/data3/EightBallPoolActivity |
+| **EightBallPoolBaseActivity.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/EightBallPoolBaseActivity.smali |
+| **jjNX20.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/new1/jjNX20.smali |
+| **slpwS7.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/new1/slpwS7.smali |
+| **wMLhN2.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/wMLhN2.smali |
+| **jLKPr9.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/jLKPr9.smali |
+| **jLKPr9$tapwq5.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/jLKPr9%24tapwq5.smali |
+| **tEOi55.smali** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/tEOi55.smali |
+| **ouc9R2.smali** ✅ **KUNCI** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/newlagi/ouc9R2.smali |
+| **oQLNW6.smali** ✅ **KUNCI** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/newlagi/oQLNW6.smali |
+| **zxcvbn.smali** ✅ **KUNCI** | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data4/newlagi/zxcvbn.smali |
+| **All loQPY7 files** | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/loQPY7 |
+| **All data4 files** | https://github.com/idincodingweb/perkakas/tree/main/8ball%20data/data4 |
+
+#### File Hasil Grep
+| File | URL |
+|------|-----|
+| EightBallPoolActivity.txt | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data3/EightBallPoolActivity.txt |
+| loadLibrary.txt | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data3/loadLibrary.txt |
+| login/auth grep | https://raw.githubusercontent.com/idincodingweb/perkakas/main/8ball%20data/data3/loginauthsigninverify.txt |
+
+---
+
+### 🎯 STRATEGI BYPASS & LANGKAH SELANJUTNYA (PRIORITAS)
+
+#### 🔴 PRIORITAS 1 — Cari file yang PANGGIL method native login check
+Search keyword di seluruh folder smali:
+- **`oU1Aa9`** — boolean getter, kemungkinan dicek untuk login status
+- **`ahc3G4`** — native boolean getter
+- **`getExpTime`** — JNI call cek expired/trial
+- **`ExpTime`** / **`expir`** / **`trial`** / **`premium`**
+- **`mjuo85`** — native check key exists
+
+**Upload file yang mengandung keyword di atas.** File itulah yang melakukan pengecekan login.
+
+#### 🔴 PRIORITAS 2 — Patch tEOi55.smali sebagai bypass darurat
+```smali
+.method public static getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+    const-string v0, "bypassed"
+    return v0
+.end method
+
+.method public static oU1Aa9(Ljava/lang/String;Z)Z
+    .locals 0
+    const/4 v0, 0x1
+    return v0
+.end method
+
+.method public static getInt(Ljava/lang/String;I)I
+    .locals 0
+    const/4 v0, 0x1
+    return v0
+.end method
+```
+
+#### 🔴 PRIORITAS 3 — Decrypt string jLKPr9 untuk cari referensi login
+Reverse engineer algoritma `hY1Z05()`:
+- Ambil mapping dari `ouc9R2.uGifl7()` (native — perlu hook atau trace)
+- Atau cari nilai mapping dari `veaIu4()` yang baca `AqcqTH`, `UOAJmm`, `WOaMuD`, `jrGBMb`
+
+#### 🟡 PRIORITAS 4 — Analisis libloader.so / libjarellgod.so
+Karena login di native, perlu reverse engineer .so:
+- `libloader.so` (6.04 MB) — cari fungsi yang handle registerToken, login check
+- `libjarellgod.so` (3.53 MB) — cari fungsi `getExpTime` dan login form render
+- Tools: `strings`, `objdump`, `Ghidra` (tapi perlu PC — keterbatasan)
+
+#### 🟡 PRIORITAS 5 — Patch langsung EightBallPoolBaseActivity
+Di method `init()` atau `loadExternalModules()`, tambahkan bypass:
+```smali
+# Langsung return setelah inisialisasi tanpa cek login
+return-void
+```
+
+#### 🟢 PRIORITAS 6 — Analisis AndroidManifest semua activity
+```bash
+grep "android:name=" AndroidManifest.xml | grep -v "androidx\|google\|applovin\|facebook\|unity\|appodeal\|bytedata\|chartboost\|inmobi\|ironsrc\|mintegral\|vungle\|amazon\|bidmachine\|android:" | sort -u
+```
+Cari activity asing yang tidak dikenal sebagai class Miniclip — kemungkinan login activity.
+
+---
+
+### 💡 KESIMPULAN AKHIR
+
+**Login dan expired check ada di NATIVE CODE (.so), bukan di Java/Smali.**
+
+Ini adalah proteksi level tinggi dari modder — mereka sengaja memindahkan semua logika login, SharedPreferences, dan string decryption ke native library (`libloader.so`) agar sulit di-reverse.
+
+**Tapi bukan berarti tidak bisa di bypass.** Ada celah:
+1. Native method tetap dipanggil dari Java via JNI — kita bisa **patch caller Java** sebelum native dipanggil
+2. Atau **patch tEOi55** (bridge native) untuk return value tetap
+3. Atau **patch langsung native .so** — replace string check di binary
+
+**Kita butuh 1-2 file lagi** — file yang memanggil `oU1Aa9` atau `getExpTime` — untuk tahu persis di mana letak pengecekan login, lalu patch dari sisi Java.
+
+---
+
+### ⚠️ CATATAN UNTUK PERCAKAPAN BARU
+
+1. **Buka dokumentasi ini + dokumentasi sesi 1** untuk konteks penuh
+2. **Search keyword KRUSIAL:** `oU1Aa9`, `getExpTime`, `ExpTime`, `mjuo85` di seluruh folder smali
+3. **Upload file hasil search** yang mengandung keyword tersebut
+4. **Baca semua file loQPY7 yang belum dibaca:** `lPs483.smali`, `h9atL3.smali`, `yVBc83/wMLhN2.smali`
+5. **Cari file yang mengandung `qwerty`** — mungkin ada class lain di package qwerty/
+6. **Prioritas bypass:** Patch caller Java → kalau tidak mempan, patch tEOi55 → kalau masih tidak mempan, reverse native .so
